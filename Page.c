@@ -1,9 +1,23 @@
 #include "Includes.h"
 
+Page *createPageObject() {
+    Page *page;
+    page = (Page *) malloc(sizeof(Page));
+    for (int i = 0; i < B_TREE_ORDER -1; i++) {
+        page->keys[i].key = -1;
+        page->keys[i].rrn = -1;
+    }
+    for (int i = 0; i < B_TREE_ORDER; i++) {
+        page->pageChildren[i] = -1;
+    }
+
+    return page;
+}
+
 Page *getPageByIndex(int index) {
     FILE *fp;
     Page *page;
-    int pageRRN = index * PAGE_SIZE;
+    long int pageRRN = index * PAGE_SIZE;
     fp = fopen(INDEX_FILE, "r");
     fseek(fp, pageRRN, SEEK_SET);
     page = readPageFromFile(fp);
@@ -14,7 +28,7 @@ Page *getPageByIndex(int index) {
 
 void setPageByIndex(int index, Page *page) {
     FILE *fp;
-    int pageRRN = index * PAGE_SIZE;
+    long int pageRRN = index * PAGE_SIZE;
     fp = fopen(INDEX_FILE, "r+");
     fseek(fp, pageRRN, SEEK_SET);
     writePageToFile(fp, page);
