@@ -33,9 +33,30 @@ int main() {
     Page *page2;
 
     page2 = getPageByIndex(2);
-    printf("\n");
     page2 = getPageByIndex(1);
-    printf("\n");
     page2 = getPageByIndex(0);
 
+    printf("%d\n", page.numberOfIndexes);
+    printf("%d\n", page.keys[0]);
+    printf("%d\n", page.pageChildren[0]);
+    printf("%d\n", page.isLeave);
+    printf("\n");
+
+    page.numberOfIndexes = 1;
+    page.keys[0] = 2;
+    page.pageChildren[0] = 3;
+    page.isLeave = 0;
+
+    printf("%d\n", page.numberOfIndexes);
+    printf("%d\n", page.keys[0]);
+    printf("%d\n", page.pageChildren[0]);
+    printf("%d\n", page.isLeave);
+    printf("\n");
+
+    setPageByIndex(2, &page);
+    page2 = getPageByIndex(2);
+    printf("%d\n", page2->numberOfIndexes);
+    printf("%d\n", page2->keys[0]);
+    printf("%d\n", page2->pageChildren[0]);
+    printf("%d\n", page2->isLeave);
 }
