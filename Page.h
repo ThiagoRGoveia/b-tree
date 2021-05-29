@@ -2,7 +2,6 @@
 #define PAGE_H_
 
 #include "Includes.h"
-
 typedef struct Page {
     int numberOfIndexes;
     int keys[B_TREE_ORDER -1];
@@ -10,7 +9,6 @@ typedef struct Page {
     int isLeave;
 } Page;
 
-void writePageToFile(FILE *fp, Page page);
-Page readPageFromFile(FILE *fp, int index);
+
 
 #endif
