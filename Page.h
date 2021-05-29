@@ -10,5 +10,6 @@ typedef struct Page {
 } Page;
 
 Page *getPageByIndex(int index);
+void setPageByIndex(int index, Page *page);
 
 #endif
