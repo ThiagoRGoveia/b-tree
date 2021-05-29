@@ -9,6 +9,6 @@ typedef struct Page {
     int isLeave;
 } Page;
 
-
+Page *getPageByIndex(int index);
 
 #endif
