@@ -16,5 +16,4 @@ void setStudentByRRN(long int RRN, Student *student) {
     fseek(fp, RRN, SEEK_SET);
     writeSudentToFile(fp, student);
     fclose(fp);
-    return student;
 }
