@@ -12,4 +12,6 @@ typedef struct Student
     float grade;
 } Student;
 
+Student *getStudentByRRN(long int RRN);
+void setStudentByRRN(long int RRN, Student *student);
 #endif
