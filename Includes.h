@@ -10,5 +10,6 @@
 #include "Page.h"
 #include "Student.h"
 #include "FileHandler.h"
+#include "BTree.h"
 
 #endif
