@@ -24,15 +24,32 @@ Page *getPageByIndex(int index) {
     fseek(fp, pageRRN, SEEK_SET);
     page = readPageFromFile(fp);
     fclose(fp);
-
     return page;
 }
 
-void setPageByIndex(int index, Page *page) {
+void updatePageByIndex(int index, Page *page) {
     FILE *fp;
     long int pageRRN = index * PAGE_SIZE;
     fp = fopen(INDEX_FILE, "r+");
     fseek(fp, pageRRN, SEEK_SET);
     writePageToFile(fp, page);
     fclose(fp);
+}
+
+
+void insertNewPageToFile(Page *page) {
+    FILE *fp;
+    fp = fopen(INDEX_FILE, "r+");
+    fseek(fp, 0, SEEK_END);
+    writePageToFile(fp, page);
+    fclose(fp);
+}
+
+int getNumberOfPagesFromFile() {
+    FILE *fp;
+    fp = fopen(INDEX_FILE, "r");
+    fseek(fp, 0, SEEK_END);
+    int fileSize = ftell(fp);
+    fclose(fp);
+    return fileSize/PAGE_SIZE;
 }
