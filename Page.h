@@ -3,16 +3,16 @@
 
 #include "Includes.h"
 
-typedef struct Key {
+typedef struct Entry {
     int key;
     long int rrn;
-} Key;
+} Entry;
 
 typedef struct Page {
-    int numberOfIndexes;
+    int numberOfEntries;
     int numberOfChildren;
-    Key keys[B_TREE_ORDER - 1];
-    int pageChildren[B_TREE_ORDER];
+    Entry entries[PAGE_MAX_ENTRIES];
+    int pageChildren[PAGE_MAX_CHILDREN];
     int isLeave;
 } Page;
 
@@ -21,4 +21,7 @@ void updatePageByIndex(int index, Page *page);
 Page *createPageObject();
 int addNewPageToFile(Page *page);
 int getNumberOfPagesFromFile();
+void addEntryToPage(Entry *entry, Page *page);
+int checkIfPageIsFull(Page *page);
+
 #endif
