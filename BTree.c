@@ -2,7 +2,7 @@
 
 int insertNewElement(Node *node, Node *parentNode, Entry *newEntry) {
     if (node->numberOfEntries == NODE_MAX_ENTRIES) {
-        if (node->parentNode) {
+        if (node->parentNode > 0) {
             return hadleLeaveNodeOverflow(node, parentNode, newEntry);
         } else {
             handleRootNodeOverflow(node, newEntry);
@@ -58,9 +58,13 @@ Node *splitNode(Node *node) {
 }
 
 int promoteEntry(Node *childNode, Node *parentNode) {
-    // int index = insertNewElement(parentNode, parentNode->parent, &childNode->entries[0]);
-    // removeEntryFromNode(&childNode->entries[0], childNode);
-    // return index;
+    int index = insertNewElement(
+        parentNode,
+        getNodeByIndex(parentNode->parentNode),
+        &childNode->entries[0]
+    );
+    removeEntryFromNode(&childNode->entries[0], childNode);
+    return index;
 }
 
 
