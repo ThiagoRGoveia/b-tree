@@ -71,6 +71,10 @@ void addEntryToPage(Entry *entry, Page *page) {
     }
 }
 
-int checkIfPageIsFull(Page *page) {
-    return page->numberOfEntries == numberOfEntries ? 1 : 0;
+int checkIfPageEntriesAreFull(Page *page) {
+    return page->numberOfEntries == PAGE_MAX_ENTRIES ? 1 : 0;
+}
+
+int checkIfPageChildrenAreFull(Page *page) {
+    return page->numberOfEntries == PAGE_MAX_CHILDREN ? 1 : 0;
 }

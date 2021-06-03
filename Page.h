@@ -23,5 +23,7 @@ int addNewPageToFile(Page *page);
 int getNumberOfPagesFromFile();
 void addEntryToPage(Entry *entry, Page *page);
 int checkIfPageIsFull(Page *page);
+int checkIfPageEntriesAreFull(Page *page);
+int checkIfPageChildrenAreFull(Page *page);
 
 #endif
