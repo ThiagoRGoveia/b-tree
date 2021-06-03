@@ -1,63 +1,63 @@
 #include "Includes.h"
 
-void printPage(Page *page) {
-    printf("%d\n", page->numberOfEntries);
-    printf("%d\n", page->numberOfChildren);
-    printf("%d\n", page->entries[0].key);
-    printf("%ld\n", page->entries[0].rrn);
-    printf("%d\n", page->isLeave);
+void printNode(Node *node) {
+    printf("%d\n", node->numberOfEntries);
+    printf("%d\n", node->numberOfChildren);
+    printf("%d\n", node->entries[0].key);
+    printf("%ld\n", node->entries[0].rrn);
+    printf("%d\n", node->isLeave);
     printf("\n");
 }
 
 int main() {
-    Page *page;
+    Node *node;
     FILE *fp;
     fp = fopen(INDEX_FILE, "w");
-    page = createPageObject();
-    page->numberOfEntries = 2;
-    page->numberOfChildren = 3;
-    page->entries[0].key = 3;
-    page->entries[0].rrn = 3;
-    page->isLeave = 1;
+    node = createNodeObject();
+    node->numberOfEntries = 2;
+    node->numberOfChildren = 3;
+    node->entries[0].key = 3;
+    node->entries[0].rrn = 3;
+    node->isLeave = 1;
 
-    writePageToFile(fp, page);
+    writeNodeToFile(fp, node);
 
-    page->numberOfEntries = 3;
-    page->numberOfChildren = 4;
-    page->entries[0].key = 2;
-    page->entries[0].rrn = 2;
-    page->isLeave = 0;
-    writePageToFile(fp, page);
+    node->numberOfEntries = 3;
+    node->numberOfChildren = 4;
+    node->entries[0].key = 2;
+    node->entries[0].rrn = 2;
+    node->isLeave = 0;
+    writeNodeToFile(fp, node);
 
-    page->numberOfEntries = 4;
-    page->numberOfChildren = 5;
-    page->entries[0].key = 1;
-    page->entries[0].rrn = 1;
-    page->isLeave = 0;
-    writePageToFile(fp, page);
+    node->numberOfEntries = 4;
+    node->numberOfChildren = 5;
+    node->entries[0].key = 1;
+    node->entries[0].rrn = 1;
+    node->isLeave = 0;
+    writeNodeToFile(fp, node);
     fclose(fp);
 
-    Page *page2;
+    Node *node2;
 
-    page2 = getPageByIndex(2);
-    printPage(page2);
-    free(page2);
-    page2 = getPageByIndex(1);
-    printPage(page2);
-    free(page2);
-    page2 = getPageByIndex(0);
-    printPage(page2);
-    free(page2);
+    node2 = getNodeByIndex(2);
+    printNode(node2);
+    free(node2);
+    node2 = getNodeByIndex(1);
+    printNode(node2);
+    free(node2);
+    node2 = getNodeByIndex(0);
+    printNode(node2);
+    free(node2);
 
 
-    page->numberOfEntries = 1;
-    page->entries[0].key = 2;
-    page->entries[0].rrn = 2;
-    page->isLeave = 0;
+    node->numberOfEntries = 1;
+    node->entries[0].key = 2;
+    node->entries[0].rrn = 2;
+    node->isLeave = 0;
 
-    setPageByIndex(2, page);
-    page2 = getPageByIndex(2);
+    setNodeByIndex(2, node);
+    node2 = getNodeByIndex(2);
 
-    printPage(page);
+    printNode(node);
 
 }

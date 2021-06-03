@@ -1,66 +1,66 @@
 #include "Includes.h"
 
-int insertNewElement(Page *page, Page *parentPage, Entry *newEntry) {
-    if (page->numberOfEntries == PAGE_MAX_ENTRIES) {
-        if (page->isLeave) {
-            return hadleLeavePageOverflow(page, parentPage, newEntry);
+int insertNewElement(Node *node, Node *parentNode, Entry *newEntry) {
+    if (node->numberOfEntries == NODE_MAX_ENTRIES) {
+        if (node->isLeave) {
+            return hadleLeaveNodeOverflow(node, parentNode, newEntry);
         } else {
-            handleRootPageOverflow(page, newEntry);
+            handleRootNodeOverflow(node, newEntry);
             return 0;
         }
     } else {
-        return addEntryToPage(newEntry, page);
+        return addEntryToNode(newEntry, node);
     }
 }
 
-int hadleLeavePageOverflow(Page *page, Page *parentPage, Entry *newEntry) {
-    Page *newLeavePage;
+int hadleLeaveNodeOverflow(Node *node, Node *parentNode, Entry *newEntry) {
+    Node *newLeaveNode;
 
-    newLeavePage = splitPage(page);
-    addEntryToPage(newLeavePage, newEntry);
+    newLeaveNode = splitNode(node);
+    addEntryToNode(newEntry, newLeaveNode);
 
-    newLeavePage->entries[0].child = page->number;
-    int promotedNewIndex = promoteEntry(newLeavePage, parentPage);
-    if (parentPage->entries[promotedNewIndex + 1].key >= 0) {
-        parentPage->entries[promotedNewIndex + 1].child = newLeavePage->number;
+    newLeaveNode->entries[0].child = node->number;
+    int promotedNewIndex = promoteEntry(newLeaveNode, parentNode);
+    if (parentNode->entries[promotedNewIndex + 1].key >= 0) {
+        parentNode->entries[promotedNewIndex + 1].child = newLeaveNode->number;
     } else {
-        parentPage->nextPage = newLeavePage->number;
+        parentNode->nextNode = newLeaveNode->number;
     }
 
-    addNewPageToFile(newLeavePage);
-    updatePageByIndex(parentPage, parentPage->number);
+    addNewNodeToFile(newLeaveNode);
+    updateNodeByIndex(parentNode->number, parentNode);
 }
 
-void handleRootPageOverflow(Page *page, Entry *newEntry) {
-    Page *newRootPage, *newLeavePage;
-    newRootPage = createPageObject();
-    newLeavePage = splitPage(page);
-    addEntryToPage(newLeavePage, newEntry);
+void handleRootNodeOverflow(Node *node, Entry *newEntry) {
+    Node *newRootNode, *newLeaveNode;
+    newRootNode = createNodeObject();
+    newLeaveNode = splitNode(node);
+    addEntryToNode(newEntry, newLeaveNode);
 
-    newLeavePage->entries[0].child = page->number;
-    newRootPage->nextPage = newLeavePage->number;
+    newLeaveNode->entries[0].child = node->number;
+    newRootNode->nextNode = newLeaveNode->number;
 
-    promoteEntry(newLeavePage, newRootPage);
+    promoteEntry(newLeaveNode, newRootNode);
 
-    addNewPageToFile(newLeavePage);
-    addNewPageToFile(newRootPage);
+    addNewNodeToFile(newLeaveNode);
+    addNewNodeToFile(newRootNode);
 }
 
-Page *splitPage(Page *page) {
-    int splitIndex = PAGE_MAX_ENTRIES / 2;
-    Page *newPage;
-    newPage = createPageObject();
-    for (int i = splitIndex + 1; i < PAGE_MAX_ENTRIES; i++) {
-        addSortedEntryToPage(newPage, &page->entries[i]);
-        removeEntry(&page->entries[i]);
+Node *splitNode(Node *node) {
+    int splitIndex = NODE_MAX_ENTRIES / 2;
+    Node *newNode;
+    newNode = createNodeObject();
+    for (int i = splitIndex + 1; i < NODE_MAX_ENTRIES; i++) {
+        addSortedEntryToNode(&node->entries[i], newNode);
+        removeEntry(&node->entries[i]);
     }
-    return newPage;
+    return newNode;
 }
 
-int promoteEntry(Page *childPage, Page *parentPage) {
-    int index = insertNewElement(childPage, parentPage, &childPage->entries[0]);
-    removeEntryFromPage(&childPage->entries[0], childPage);
-    return index;
+int promoteEntry(Node *childNode, Node *parentNode) {
+    // int index = insertNewElement(parentNode, parentNode->parent, &childNode->entries[0]);
+    // removeEntryFromNode(&childNode->entries[0], childNode);
+    // return index;
 }
 
 

@@ -5,7 +5,7 @@
 
 Student *readStudentFromFile(FILE *fp);
 void writeSudentToFile (FILE *fp, Student *student);
-Page *readPageFromFile(FILE *fp);
-void writePageToFile(FILE *fp, Page *page);
+Node *readNodeFromFile(FILE *fp);
+void writeNodeToFile(FILE *fp, Node *node);
 
 #endif

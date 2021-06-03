@@ -21,29 +21,29 @@ void writeSudentToFile (FILE *fp, Student *student) {
 }
 
 // MUDAR PARA PERMITIR VARIAS PAGINAS
-Page *readPageFromFile(FILE *fp) {
-    Page *page;
-    page = createPageObject();
-    fread(&page->numberOfEntries, sizeof(int), 1, fp);
-    fread(&page->numberOfChildren, sizeof(int), 1, fp);
+Node *readNodeFromFile(FILE *fp) {
+    Node *node;
+    node = createNodeObject();
+    fread(&node->numberOfEntries, sizeof(int), 1, fp);
+    fread(&node->numberOfChildren, sizeof(int), 1, fp);
     for (int i = 0; i < B_TREE_ORDER - 1; i++) {
-        fread(&page->entries[i].key, sizeof(int), 1, fp);
-        fread(&page->entries[i].rrn, sizeof(long int), 1, fp);
-        fread(&page->entries[i].child, sizeof(int), 1, fp);
+        fread(&node->entries[i].key, sizeof(int), 1, fp);
+        fread(&node->entries[i].rrn, sizeof(long int), 1, fp);
+        fread(&node->entries[i].child, sizeof(int), 1, fp);
     }
-    fread(&page->isLeave, sizeof(int), 1, fp);
-    return page;
+    fread(&node->isLeave, sizeof(int), 1, fp);
+    return node;
 }
 
 // MUDAR PARA PERMITIR VARIAS PAGINAS
-void writePageToFile(FILE *fp, Page *page) {
-    fwrite(&page->numberOfEntries, sizeof(int), 1, fp);
-    fwrite(&page->numberOfChildren, sizeof(int), 1, fp);
+void writeNodeToFile(FILE *fp, Node *node) {
+    fwrite(&node->numberOfEntries, sizeof(int), 1, fp);
+    fwrite(&node->numberOfChildren, sizeof(int), 1, fp);
     for (int i = 0; i < B_TREE_ORDER - 1; i++) {
-        fwrite(&page->entries[i].key, sizeof(int), 1, fp);
-        fwrite(&page->entries[i].rrn, sizeof(long int), 1, fp);
-        fwrite(&page->entries[i].child, sizeof(int), 1, fp);
+        fwrite(&node->entries[i].key, sizeof(int), 1, fp);
+        fwrite(&node->entries[i].rrn, sizeof(long int), 1, fp);
+        fwrite(&node->entries[i].child, sizeof(int), 1, fp);
     }
-    fwrite(&page->isLeave, sizeof(int), 1, fp);
+    fwrite(&node->isLeave, sizeof(int), 1, fp);
 }
 

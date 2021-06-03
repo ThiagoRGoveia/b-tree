@@ -2,16 +2,16 @@
 
 int main()
 {
-    Page *page;
+    Node *node;
 
-    page = createPageObject();
-    page->entries[0].key = 1;
-    page->entries[0].rrn = 10;
-    page->entries[1].key = 5;
-    page->entries[1].rrn = 10;
-    page->entries[2].key = 8;
-    page->entries[2].rrn = 10;
-    page->numberOfEntries = 3;
+    node = createNodeObject();
+    node->entries[0].key = 1;
+    node->entries[0].rrn = 10;
+    node->entries[1].key = 5;
+    node->entries[1].rrn = 10;
+    node->entries[2].key = 8;
+    node->entries[2].rrn = 10;
+    node->numberOfEntries = 3;
 
     Entry *entry;
 
@@ -19,15 +19,15 @@ int main()
     entry->key = 6;
     entry->rrn = 20;
 
-    addEntryToPage(entry, page);
+    addEntryToNode(entry, node);
     free(entry);
-    printf("%d\n", page->entries[0].key);
-    printf("%ld\n", page->entries[0].rrn);
-    printf("%d\n", page->entries[1].key);
-    printf("%ld\n", page->entries[1].rrn);
-    printf("%d\n", page->entries[2].key);
-    printf("%ld\n", page->entries[2].rrn);
-    printf("%d\n", page->entries[3].key);
-    printf("%ld\n", page->entries[3].rrn);
+    printf("%d\n", node->entries[0].key);
+    printf("%ld\n", node->entries[0].rrn);
+    printf("%d\n", node->entries[1].key);
+    printf("%ld\n", node->entries[1].rrn);
+    printf("%d\n", node->entries[2].key);
+    printf("%ld\n", node->entries[2].rrn);
+    printf("%d\n", node->entries[3].key);
+    printf("%ld\n", node->entries[3].rrn);
 
 }
