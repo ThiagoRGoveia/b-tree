@@ -3,11 +3,11 @@
 Page *createPageObject() {
     Page *page;
     page = (Page *) malloc(sizeof(Page));
-    for (int i = 0; i < B_TREE_ORDER -1; i++) {
+    for (int i = 0; i < PAGE_MAX_ENTRIES; i++) {
         page->entries[i].key = -1;
         page->entries[i].rrn = -1;
     }
-    for (int i = 0; i < B_TREE_ORDER; i++) {
+    for (int i = 0; i < PAGE_MAX_CHILDREN; i++) {
         page->pageChildren[i] = -1;
     }
     page->numberOfEntries = 0;
@@ -78,3 +78,4 @@ int checkIfPageEntriesAreFull(Page *page) {
 int checkIfPageChildrenAreFull(Page *page) {
     return page->numberOfEntries == PAGE_MAX_CHILDREN ? 1 : 0;
 }
+
