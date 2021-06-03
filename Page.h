@@ -19,5 +19,6 @@ typedef struct Page {
 Page *getPageByIndex(int index);
 void updatePageByIndex(int index, Page *page);
 Page *createPageObject();
+int addNewPageToFile(Page *page);
 int getNumberOfPagesFromFile();
 #endif

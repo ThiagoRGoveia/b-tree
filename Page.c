@@ -37,12 +37,14 @@ void updatePageByIndex(int index, Page *page) {
 }
 
 
-void insertNewPageToFile(Page *page) {
+int addNewPageToFile(Page *page) {
     FILE *fp;
     fp = fopen(INDEX_FILE, "r+");
     fseek(fp, 0, SEEK_END);
     writePageToFile(fp, page);
+    int fileSize = ftell(fp);
     fclose(fp);
+    return fileSize/PAGE_SIZE;
 }
 
 int getNumberOfPagesFromFile() {
