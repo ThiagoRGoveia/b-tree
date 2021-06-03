@@ -5,7 +5,6 @@ void printPage(Page *page) {
     printf("%d\n", page->numberOfChildren);
     printf("%d\n", page->entries[0].key);
     printf("%ld\n", page->entries[0].rrn);
-    printf("%d\n", page->pageChildren[0]);
     printf("%d\n", page->isLeave);
     printf("\n");
 }
@@ -19,7 +18,6 @@ int main() {
     page->numberOfChildren = 3;
     page->entries[0].key = 3;
     page->entries[0].rrn = 3;
-    page->pageChildren[0] = 2;
     page->isLeave = 1;
 
     writePageToFile(fp, page);
@@ -28,7 +26,6 @@ int main() {
     page->numberOfChildren = 4;
     page->entries[0].key = 2;
     page->entries[0].rrn = 2;
-    page->pageChildren[0] = 5;
     page->isLeave = 0;
     writePageToFile(fp, page);
 
@@ -36,7 +33,6 @@ int main() {
     page->numberOfChildren = 5;
     page->entries[0].key = 1;
     page->entries[0].rrn = 1;
-    page->pageChildren[0] = 6;
     page->isLeave = 0;
     writePageToFile(fp, page);
     fclose(fp);
@@ -57,7 +53,6 @@ int main() {
     page->numberOfEntries = 1;
     page->entries[0].key = 2;
     page->entries[0].rrn = 2;
-    page->pageChildren[0] = 3;
     page->isLeave = 0;
 
     setPageByIndex(2, page);

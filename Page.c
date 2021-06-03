@@ -6,9 +6,7 @@ Page *createPageObject() {
     for (int i = 0; i < PAGE_MAX_ENTRIES; i++) {
         page->entries[i].key = -1;
         page->entries[i].rrn = -1;
-    }
-    for (int i = 0; i < PAGE_MAX_CHILDREN; i++) {
-        page->pageChildren[i] = -1;
+        page->entries[i].child = -1;
     }
     page->numberOfEntries = 0;
     page->numberOfChildren = 0;
@@ -56,9 +54,10 @@ int getNumberOfPagesFromFile() {
     return fileSize/PAGE_SIZE;
 }
 
-void addEntryToPage(Entry *entry, Page *page) {
+int addEntryToPage(Entry *entry, Page *page) {
     if (page->numberOfEntries == 0) {
         page->entries[0] = *entry;
+        return 0;
     }
     for (int i = page->numberOfEntries - 1; i >= 0; i--) {
         if (page->entries[i].key > entry->key) {
@@ -66,16 +65,45 @@ void addEntryToPage(Entry *entry, Page *page) {
                 page->entries[j + 1] = page->entries[j];
             }
             page->entries[i] = *entry;
-            break;
+            page->numberOfEntries += 1;
+            return i;
         }
     }
+
 }
 
-int checkIfPageEntriesAreFull(Page *page) {
+int checkIfPageIsFull(Page *page) {
     return page->numberOfEntries == PAGE_MAX_ENTRIES ? 1 : 0;
 }
 
-int checkIfPageChildrenAreFull(Page *page) {
-    return page->numberOfEntries == PAGE_MAX_CHILDREN ? 1 : 0;
+void addSortedEntryToPage(Entry *entry, Page *page) {
+    page->entries[page->numberOfEntries - 1] = *entry;
+    page->numberOfEntries += 1;
 }
 
+void removeEntryAndRearrangePage(Entry *entry, Page *page) {
+    if (entry->key != page->entries[page->numberOfEntries - 1].key) {
+        int indexToBeRemoved = - 1;
+        int i = 0;
+        // MUDAR PRA BINARY SEARCH
+        while (indexToBeRemoved < 0 && i < page->numberOfEntries) {
+            if (page->entries[i].key == entry->key) {
+                indexToBeRemoved = i;
+            }
+        }
+        if (indexToBeRemoved < 0) {
+            return;
+        }
+        for (int j = i; j < page->numberOfEntries; j++) {
+            page->entries[j] = page->entries[j + 1];
+        }
+    }
+    page->entries[page->numberOfEntries - 1].key = -1;
+    page->entries[page->numberOfEntries - 1].rrn = -1;
+}
+
+void removeEntry(Entry *entry) {
+    entry->key = -1;
+    entry->rrn = -1;
+    entry->child = -1;
+}
