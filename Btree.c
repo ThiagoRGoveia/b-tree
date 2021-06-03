@@ -2,7 +2,7 @@
 
 int insertNewElement(Node *node, Node *parentNode, Entry *newEntry) {
     if (node->numberOfEntries == NODE_MAX_ENTRIES) {
-        if (node->isLeave) {
+        if (node->parentNode) {
             return hadleLeaveNodeOverflow(node, parentNode, newEntry);
         } else {
             handleRootNodeOverflow(node, newEntry);

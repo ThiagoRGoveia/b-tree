@@ -31,7 +31,7 @@ Node *readNodeFromFile(FILE *fp) {
         fread(&node->entries[i].rrn, sizeof(long int), 1, fp);
         fread(&node->entries[i].child, sizeof(int), 1, fp);
     }
-    fread(&node->isLeave, sizeof(int), 1, fp);
+    fread(&node->parentNode, sizeof(int), 1, fp);
     return node;
 }
 
@@ -44,6 +44,6 @@ void writeNodeToFile(FILE *fp, Node *node) {
         fwrite(&node->entries[i].rrn, sizeof(long int), 1, fp);
         fwrite(&node->entries[i].child, sizeof(int), 1, fp);
     }
-    fwrite(&node->isLeave, sizeof(int), 1, fp);
+    fwrite(&node->parentNode, sizeof(int), 1, fp);
 }
 

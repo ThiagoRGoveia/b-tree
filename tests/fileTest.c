@@ -5,7 +5,7 @@ void printNode(Node *node) {
     printf("%d\n", node->numberOfChildren);
     printf("%d\n", node->entries[0].key);
     printf("%ld\n", node->entries[0].rrn);
-    printf("%d\n", node->isLeave);
+    printf("%d\n", node->parentNode);
     printf("\n");
 }
 
@@ -18,7 +18,7 @@ int main() {
     node->numberOfChildren = 3;
     node->entries[0].key = 3;
     node->entries[0].rrn = 3;
-    node->isLeave = 1;
+    node->parentNode = 1;
 
     writeNodeToFile(fp, node);
 
@@ -26,14 +26,14 @@ int main() {
     node->numberOfChildren = 4;
     node->entries[0].key = 2;
     node->entries[0].rrn = 2;
-    node->isLeave = 0;
+    node->parentNode = 0;
     writeNodeToFile(fp, node);
 
     node->numberOfEntries = 4;
     node->numberOfChildren = 5;
     node->entries[0].key = 1;
     node->entries[0].rrn = 1;
-    node->isLeave = 0;
+    node->parentNode = 0;
     writeNodeToFile(fp, node);
     fclose(fp);
 
@@ -53,7 +53,7 @@ int main() {
     node->numberOfEntries = 1;
     node->entries[0].key = 2;
     node->entries[0].rrn = 2;
-    node->isLeave = 0;
+    node->parentNode = 0;
 
     setNodeByIndex(2, node);
     node2 = getNodeByIndex(2);
