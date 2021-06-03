@@ -10,6 +10,8 @@ Page *createPageObject() {
     for (int i = 0; i < B_TREE_ORDER; i++) {
         page->pageChildren[i] = -1;
     }
+    page->numberOfIndexes = 0;
+    page->numberOfChildren = 0;
 
     return page;
 }

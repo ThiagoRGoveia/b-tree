@@ -10,6 +10,7 @@ typedef struct Key {
 
 typedef struct Page {
     int numberOfIndexes;
+    int numberOfChildren;
     Key keys[B_TREE_ORDER - 1];
     int pageChildren[B_TREE_ORDER];
     int isLeave;
