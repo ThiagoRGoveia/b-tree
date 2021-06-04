@@ -11,5 +11,6 @@
 #include "Student.h"
 #include "FileHandler.h"
 #include "BTree.h"
+#include "Search.h"
 
 #endif
