@@ -10,7 +10,8 @@ Node *createNodeObject() {
     }
     node->numberOfEntries = 0;
     node->numberOfChildren = 0;
-
+    node->parentNode = -1;
+    node->nextNode = -1;
     return node;
 }
 
