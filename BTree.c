@@ -5,7 +5,7 @@ BTree *createBTree() {
     bTree = (BTree *) malloc(sizeof(BTree));
 
     bTree->numberOfNodes = 0;
-    bTree->rootNode = createNodeObject(bTree);
+    bTree->rootNode = createNewNode(bTree);
     return bTree;
 }
 
@@ -19,4 +19,12 @@ BTree *loadOrCreateBTree() {
     } else {
         return createBTree();
     }
+}
+
+Node *createNewNode(BTree *bTree) {
+    Node *node;
+    node = createNodeObject();
+    node->index = bTree->numberOfNodes;
+    bTree->numberOfNodes++;
+    return node;
 }

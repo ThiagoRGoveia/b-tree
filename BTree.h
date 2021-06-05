@@ -5,6 +5,6 @@
 
 BTree *createBTree();
 BTree *loadOrCreateBTree();
-
+Node *createNewNode(BTree *bTree);
 
 #endif
