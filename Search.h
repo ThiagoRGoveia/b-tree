@@ -3,7 +3,12 @@
 
 #include "Includes.h"
 
-long int getRRNByPrimaryKey(int nUSP);
-int keyPositionSearch(Entry * entries, int end, int value);
+typedef struct result {
+    Entry entry;
+    Node * node;
+} Result;
+
+Result * getRRNByPrimaryKey(int nUSP);
+int keyPositionSearch(Entry * entries, int start, int end, int value);
 
 #endif
