@@ -47,3 +47,17 @@ void writeNodeToFile(FILE *fp, Node *node) {
     fwrite(&node->parentNode, sizeof(int), 1, fp);
 }
 
+BTree *readBTreeFromFile(FILE *fp) {
+    BTree *bTree;
+    bTree = (BTree *) malloc(sizeof(BTree));
+    int rootNodeIndex;
+    fread(&bTree->numberOfNodes, sizeof(int), 1, fp);
+    fread(&rootNodeIndex, sizeof(int), 1, fp);
+    bTree->rootNode = getNodeByIndex(rootNodeIndex);
+    return bTree;
+}
+
+void writeBtreeHeaderToFIle(FILE *fp, BTree *bTree) {
+    fread(&bTree->numberOfNodes, sizeof(int), 1, fp);
+    fread(&bTree->rootNode->index, sizeof(int), 1, fp);
+}
