@@ -8,10 +8,6 @@ typedef struct BTree {
     Node *node;
 } BTree;
 
-int insertNewElement(Node *node, Entry *newEntry);
-int hadleLeaveNodeOverflow(Node *node, Entry *newEntry);
-void handleRootNodeOverflow(Node *node, Entry *newEntry);
-Node *splitNode(Node *node);
-int promoteEntry(Node *childNode);
+
 
 #endif
