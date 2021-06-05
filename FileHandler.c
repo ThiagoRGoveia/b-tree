@@ -20,10 +20,10 @@ void writeSudentToFile (FILE *fp, Student *student) {
     fwrite(&student->grade, sizeof(float), 1, fp);
 }
 
-// MUDAR PARA PERMITIR VARIAS PAGINAS
 Node *readNodeFromFile(FILE *fp) {
     Node *node;
     node = createNodeObject();
+    fread(&node->index, sizeof(int), 1, fp);
     fread(&node->numberOfEntries, sizeof(int), 1, fp);
     fread(&node->numberOfChildren, sizeof(int), 1, fp);
     for (int i = 0; i < B_TREE_ORDER - 1; i++) {
@@ -35,8 +35,8 @@ Node *readNodeFromFile(FILE *fp) {
     return node;
 }
 
-// MUDAR PARA PERMITIR VARIAS PAGINAS
 void writeNodeToFile(FILE *fp, Node *node) {
+    fwrite(&node->index, sizeof(int), 1, fp);
     fwrite(&node->numberOfEntries, sizeof(int), 1, fp);
     fwrite(&node->numberOfChildren, sizeof(int), 1, fp);
     for (int i = 0; i < B_TREE_ORDER - 1; i++) {
