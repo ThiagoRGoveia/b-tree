@@ -3,11 +3,11 @@
 
 #include "Includes.h"
 
-int insertNewElement(Node *node, Entry *newEntry);
-int hadleLeaveNodeOverflow(Node *node, Entry *newEntry);
-void handleRootNodeOverflow(Node *node, Entry *newEntry);
-Node *splitNode(Node *node);
-int promoteEntry(Node *childNode);
+int insertNewElement(BTree *bTree, Node *node, Entry *newEntry);
+int hadleLeaveNodeOverflow(BTree *bTree, Node *node, Entry *newEntry);
+void handleRootNodeOverflow(BTree *bTree, Node *node, Entry *newEntry);
+Node *splitNode(BTree *bTree, Node *node);
+int promoteEntry(BTree *bTree, Node *childNode);
 
 
 #endif

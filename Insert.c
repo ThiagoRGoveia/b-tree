@@ -1,12 +1,11 @@
 #include "Includes.h"
 
-
-int insertNewElement(Node *node, Entry *newEntry) {
+int insertNewElement(BTree *bTree, Node *node, Entry *newEntry) {
     if (node->numberOfEntries == NODE_MAX_ENTRIES) {
         if (node->parentNode > 0) {
-            return hadleLeaveNodeOverflow(node, newEntry);
+            return hadleLeaveNodeOverflow(bTree, node, newEntry);
         } else {
-            handleRootNodeOverflow(node, newEntry);
+            handleRootNodeOverflow(bTree, node, newEntry);
             return 0;
         }
     } else {
@@ -14,17 +13,17 @@ int insertNewElement(Node *node, Entry *newEntry) {
     }
 }
 
-int hadleLeaveNodeOverflow(Node *node, Entry *newEntry) {
+int hadleLeaveNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
     Node *newLeaveNode;
 
-    newLeaveNode = splitNode(node);
+    newLeaveNode = splitNode(bTree, node);
     addEntryToNode(newEntry, newLeaveNode);
     newLeaveNode->entries[0].child = node->index;
 
     Node *parentNode;
     parentNode = getNodeByIndex(node->parentNode);
 
-    int promotedNewIndex = promoteEntry(newLeaveNode);
+    int promotedNewIndex = promoteEntry(bTree, newLeaveNode);
     if (parentNode->entries[promotedNewIndex + 1].key >= 0) {
         parentNode->entries[promotedNewIndex + 1].child = newLeaveNode->index;
     } else {
@@ -35,10 +34,10 @@ int hadleLeaveNodeOverflow(Node *node, Entry *newEntry) {
     updateNodeByIndex(parentNode->index, parentNode);
 }
 
-void handleRootNodeOverflow(Node *node, Entry *newEntry) {
+void handleRootNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
     Node *newRootNode, *newLeaveNode;
-    newRootNode = createNodeObject();
-    newLeaveNode = splitNode(node);
+    newRootNode = createNewNode(bTree);
+    newLeaveNode = splitNode(bTree, node);
     addEntryToNode(newEntry, newLeaveNode);
 
     newLeaveNode->entries[0].child = node->index;
@@ -46,16 +45,16 @@ void handleRootNodeOverflow(Node *node, Entry *newEntry) {
     newLeaveNode->parentNode = newRootNode->index;
     node->parentNode = newRootNode->index;
 
-    promoteEntry(newLeaveNode);
+    promoteEntry(bTree, newLeaveNode);
 
     addNewNodeToFile(newLeaveNode);
     addNewNodeToFile(newRootNode);
 }
 
-Node *splitNode(Node *node) {
+Node *splitNode(BTree *bTree, Node *node) {
     int splitIndex = NODE_MAX_ENTRIES / 2;
     Node *newNode;
-    newNode = createNodeObject();
+    newNode = createNewNode(bTree);
     for (int i = splitIndex + 1; i < NODE_MAX_ENTRIES; i++) {
         addSortedEntryToNode(&node->entries[i], newNode);
         removeEntry(&node->entries[i]);
@@ -64,8 +63,9 @@ Node *splitNode(Node *node) {
     return newNode;
 }
 
-int promoteEntry(Node *childNode) {
+int promoteEntry(BTree *bTree, Node *childNode) {
     int index = insertNewElement(
+        bTree,
         getNodeByIndex(childNode->parentNode),
         &childNode->entries[0]
     );
