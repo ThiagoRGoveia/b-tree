@@ -4,7 +4,7 @@
 #include "Includes.h"
 
 Node *getNodeByIndex(int index);
-void updateNodeByIndex(int index, Node *node);
+void updateNode(Node *node);
 Node *createNodeObject();
 int addNewNodeToFile(Node *node);
 int getNumberOfNodesFromFile();

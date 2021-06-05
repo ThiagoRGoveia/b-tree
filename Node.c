@@ -26,10 +26,10 @@ Node *getNodeByIndex(int index) {
     return node;
 }
 
-void updateNodeByIndex(int index, Node *node) {
+void updateNode(Node *node) {
     FILE *fp;
-    long int nodeRRN = index * NODE_SIZE;
-    fp = fopen(INDEX_FILE, "r+");
+    long int nodeRRN = node->index * NODE_SIZE;
+    fp = fopen(INDEX_FILE, "a");
     fseek(fp, nodeRRN, SEEK_SET);
     writeNodeToFile(fp, node);
     fclose(fp);
@@ -38,7 +38,7 @@ void updateNodeByIndex(int index, Node *node) {
 
 int addNewNodeToFile(Node *node) {
     FILE *fp;
-    fp = fopen(INDEX_FILE, "r+");
+    fp = fopen(INDEX_FILE, "a");
     fseek(fp, 0, SEEK_END);
     writeNodeToFile(fp, node);
     int fileSize = ftell(fp);
@@ -58,6 +58,7 @@ int getNumberOfNodesFromFile() {
 int addEntryToNode(Entry *entry, Node *node) {
     if (node->numberOfEntries == 0) {
         node->entries[0] = *entry;
+        node->numberOfEntries += 1;
         return 0;
     }
     for (int i = node->numberOfEntries - 1; i >= 0; i--) {
@@ -70,6 +71,7 @@ int addEntryToNode(Entry *entry, Node *node) {
             return i;
         }
     }
+    node->entries[node->numberOfEntries++] = *entry;
 
 }
 
@@ -78,7 +80,7 @@ int checkIfNodeIsFull(Node *node) {
 }
 
 void addSortedEntryToNode(Entry *entry, Node *node) {
-    node->entries[node->numberOfEntries - 1] = *entry;
+    node->entries[node->numberOfEntries] = *entry;
     node->numberOfEntries += 1;
 }
 

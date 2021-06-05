@@ -32,6 +32,7 @@ Node *readNodeFromFile(FILE *fp) {
         fread(&node->entries[i].child, sizeof(int), 1, fp);
     }
     fread(&node->parentNode, sizeof(int), 1, fp);
+    fread(&node->nextNode, sizeof(int), 1, fp);
     return node;
 }
 
@@ -45,6 +46,7 @@ void writeNodeToFile(FILE *fp, Node *node) {
         fwrite(&node->entries[i].child, sizeof(int), 1, fp);
     }
     fwrite(&node->parentNode, sizeof(int), 1, fp);
+    fwrite(&node->nextNode, sizeof(int), 1, fp);
 }
 
 BTree *readBTreeFromFile(FILE *fp) {
