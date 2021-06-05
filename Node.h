@@ -10,7 +10,7 @@ typedef struct Entry {
 } Entry;
 
 typedef struct Node {
-    int number;
+    int index;
     int numberOfEntries;
     int numberOfChildren;
     Entry entries[NODE_MAX_ENTRIES];
