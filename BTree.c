@@ -63,7 +63,7 @@ int promoteEntry(Node *childNode, Node *parentNode) {
         getNodeByIndex(parentNode->parentNode),
         &childNode->entries[0]
     );
-    removeEntryFromNode(&childNode->entries[0], childNode);
+    removeEntryAndRearrangeNode(&childNode->entries[0], childNode);
     return index;
 }
 
