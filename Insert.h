@@ -6,8 +6,8 @@
 int insertNewElement(BTree *bTree, Node *node, Entry *newEntry);
 int hadleLeaveNodeOverflow(BTree *bTree, Node *node, Entry *newEntry);
 void handleRootNodeOverflow(BTree *bTree, Node *node, Entry *newEntry);
-Node *splitNode(BTree *bTree, Node *node);
-int promoteEntry(BTree *bTree, Node *childNode);
+Node *splitNode(BTree *bTree, Node *node, Entry *newEntry);
+int promoteEntry(BTree *bTree, Node *childNode, Node *parentNode);
 
 
 #endif

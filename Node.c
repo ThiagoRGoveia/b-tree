@@ -29,7 +29,8 @@ Node *getNodeByIndex(int index) {
 void updateNode(Node *node) {
     FILE *fp;
     long int nodeRRN = node->index * NODE_SIZE;
-    fp = fopen(INDEX_FILE, "a");
+    // printf("%ld\n", nodeRRN);
+    fp = fopen(INDEX_FILE, "r+");
     fseek(fp, nodeRRN, SEEK_SET);
     writeNodeToFile(fp, node);
     fclose(fp);
