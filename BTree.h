@@ -3,11 +3,8 @@
 
 #include "Includes.h"
 
-typedef struct BTree {
-    int numberOfNodes;
-    Node *node;
-} BTree;
-
+BTree *createBTree();
+BTree *loadOrCreateBTree();
 
 
 #endif

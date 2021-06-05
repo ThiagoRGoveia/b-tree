@@ -3,21 +3,6 @@
 
 #include "Includes.h"
 
-typedef struct Entry {
-    int key;
-    long int rrn;
-    int child;
-} Entry;
-
-typedef struct Node {
-    int index;
-    int numberOfEntries;
-    int numberOfChildren;
-    Entry entries[NODE_MAX_ENTRIES];
-    int parentNode;
-    int nextNode;
-} Node;
-
 Node *getNodeByIndex(int index);
 void updateNodeByIndex(int index, Node *node);
 Node *createNodeObject();

@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include "Defines.h"
+#include "Structs.h"
 #include "Node.h"
 #include "Student.h"
 #include "FileHandler.h"
