@@ -5,7 +5,6 @@ int insertNewElement(BTree *bTree, Node *node, Entry *newEntry) {
         if (node->parentNode > 0) {
             return hadleLeaveNodeOverflow(bTree, node, newEntry);
         } else {
-            // printf("0\n");
             handleRootNodeOverflow(bTree, node, newEntry);
             return 0;
         }
@@ -16,20 +15,20 @@ int insertNewElement(BTree *bTree, Node *node, Entry *newEntry) {
 
 int hadleLeaveNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
     Node *newLeaveNode, *parentNode;
-    parentNode = getNodeByIndex(node->index);
-
+    parentNode = getNodeByIndex(node->parentNode);
     newLeaveNode = splitNode(bTree, node, newEntry);
-    addEntryToNode(newEntry, newLeaveNode);
+
+    addNewNodeToFile(newLeaveNode);
     newLeaveNode->entries[0].child = node->index;
 
     int promotedNewIndex = promoteEntry(bTree, newLeaveNode, parentNode);
+
     if (parentNode->entries[promotedNewIndex + 1].key >= 0) {
         parentNode->entries[promotedNewIndex + 1].child = newLeaveNode->index;
     } else {
         parentNode->nextNode = newLeaveNode->index;
     }
 
-    addNewNodeToFile(newLeaveNode);
     updateNode(node);
     updateNode(parentNode);
     updateNode(newLeaveNode);
@@ -49,7 +48,6 @@ void handleRootNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
     node->parentNode = newRootNode->index;
 
     promoteEntry(bTree, newLeaveNode, newRootNode);
-
     updateNode(newRootNode);
     updateNode(node);
     updateNode(newLeaveNode);

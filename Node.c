@@ -73,7 +73,6 @@ int addEntryToNode(Entry *entry, Node *node) {
         }
     }
     node->entries[node->numberOfEntries++] = *entry;
-
 }
 
 int checkIfNodeIsFull(Node *node) {
@@ -104,6 +103,8 @@ void removeEntryAndRearrangeNode(Entry *entry, Node *node) {
     }
     node->entries[node->numberOfEntries - 1].key = -1;
     node->entries[node->numberOfEntries - 1].rrn = -1;
+    node->entries[node->numberOfEntries - 1].child = -1;
+    node->numberOfEntries--;
 }
 
 void removeEntry(Entry *entry) {
