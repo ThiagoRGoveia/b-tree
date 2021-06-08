@@ -14,4 +14,5 @@ typedef struct Student
 
 Student *getStudentByRRN(long int RRN);
 void setStudentByRRN(long int RRN, Student *student);
+Student *entrada_student(const char *string);
 #endif
