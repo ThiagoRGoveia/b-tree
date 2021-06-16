@@ -8,7 +8,7 @@ typedef struct result {
     Node * node;
 } Result;
 
-Result * getRRNByPrimaryKey(int nUSP);
+Result * getRRNByPrimaryKey(long int rrnCurrent, int nUSP);
 int keyPositionSearch(Entry * entries, int start, int end, int value);
 
 #endif
