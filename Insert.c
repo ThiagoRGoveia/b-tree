@@ -37,11 +37,24 @@ int hadleLeaveNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
     }
 
     parentNode->entries[promotedNewIndex].child = node->index;
+    printf("---\n");
+    printf("promotedNewIndex %d\n", promotedNewIndex);
+    printf("Index %d\n", parentNode->index);
+    for (int i=0; i < 8; i++) {
+        printf("Key [%d] %d\n", i, parentNode->entries[i].key);
+        printf("Child [%d] %d\n", i, parentNode->entries[i].child);
+    }
+    printf("Next node %d\n", parentNode->nextNode);
+    printf("Parent %d\n", parentNode->parentNode);
+    printf("Number of entries %d\n", parentNode->numberOfEntries);
+    printf("---\n");
     // printf("SPLIT_LEAVE_NODE.5\n");
 
     updateNode(node);
     updateNode(parentNode);
     updateNode(newLeaveNode);
+    free(parentNode);
+    free(newLeaveNode);
     // printf("SPLIT_LEAVE_NODE.6\n");
 }
 
