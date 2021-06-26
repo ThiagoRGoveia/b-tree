@@ -8,5 +8,6 @@
 #define NODE_SIZE (20 + (16 * (NODE_MAX_ENTRIES)))
 #define INDEX_FILE "nodes.dat"
 #define DATA_FILE "data.dat"
+#define DELIMITERCHAR ','
 
 #endif
