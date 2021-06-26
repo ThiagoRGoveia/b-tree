@@ -22,17 +22,23 @@ void writeSudentToFile (FILE *fp, Student *student) {
 
 Node *readNodeFromFile(FILE *fp) {
     Node *node;
+    // printf("1.5.0\n");
     node = createNodeObject();
+    // printf("1.5.1\n");
     fread(&node->index, sizeof(int), 1, fp);
     fread(&node->numberOfEntries, sizeof(int), 1, fp);
     fread(&node->numberOfChildren, sizeof(int), 1, fp);
+    // printf("1.5.2\n");
     for (int i = 0; i < B_TREE_ORDER - 1; i++) {
         fread(&node->entries[i].key, sizeof(int), 1, fp);
         fread(&node->entries[i].rrn, sizeof(long int), 1, fp);
         fread(&node->entries[i].child, sizeof(int), 1, fp);
     }
+    // printf("1.5.3\n");
     fread(&node->parentNode, sizeof(int), 1, fp);
+    // printf("1.5.4\n");
     fread(&node->nextNode, sizeof(int), 1, fp);
+    // printf("1.5.5\n");
     return node;
 }
 
@@ -52,14 +58,18 @@ void writeNodeToFile(FILE *fp, Node *node) {
 BTree *readBTreeFromFile(FILE *fp) {
     BTree *bTree;
     bTree = (BTree *) malloc(sizeof(BTree));
-    int rootNodeIndex;
     fread(&bTree->numberOfNodes, sizeof(int), 1, fp);
-    fread(&rootNodeIndex, sizeof(int), 1, fp);
-    bTree->rootNode = getNodeByIndex(rootNodeIndex);
+    fread(&bTree->rootNode, sizeof(int), 1, fp);
+    // printf("READ\n");
+    // printf("numberOfNodes %d\n", bTree->numberOfNodes);
+    // printf("rootNodeIndex %d\n", bTree->rootNode);
     return bTree;
 }
 
-void writeBtreeHeaderToFIle(FILE *fp, BTree *bTree) {
-    fread(&bTree->numberOfNodes, sizeof(int), 1, fp);
-    fread(&bTree->rootNode->index, sizeof(int), 1, fp);
+void writeBtreeHeaderToFile(FILE *fp, BTree *bTree) {
+    // printf("WRITE\n");
+    // printf("numberOfNodes %d\n", bTree->numberOfNodes);
+    // printf("rootNodeIndex %d\n", bTree->rootNode);
+    fwrite(&bTree->numberOfNodes, sizeof(int), 1, fp);
+    fwrite(&bTree->rootNode, sizeof(int), 1, fp);
 }

@@ -6,5 +6,6 @@
 BTree *createBTree();
 BTree *loadOrCreateBTree();
 Node *createNewNode(BTree *bTree);
+void writeBTreeHeader(BTree *bTree);
 
 #endif

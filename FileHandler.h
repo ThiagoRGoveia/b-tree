@@ -8,5 +8,5 @@ void writeSudentToFile (FILE *fp, Student *student);
 Node *readNodeFromFile(FILE *fp);
 void writeNodeToFile(FILE *fp, Node *node);
 BTree *readBTreeFromFile(FILE *fp);
-void writeBtreeHeaderToFIle(FILE *fp, BTree *bTree);
+void writeBtreeHeaderToFile(FILE *fp, BTree *bTree);
 #endif

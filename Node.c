@@ -18,7 +18,7 @@ Node *createNodeObject() {
 Node *getNodeByIndex(int index) {
     FILE *fp;
     Node *node;
-    long int nodeRRN = index * NODE_SIZE;
+    long int nodeRRN = index * NODE_SIZE + 8;
     fp = fopen(INDEX_FILE, "r");
     fseek(fp, nodeRRN, SEEK_SET);
     node = readNodeFromFile(fp);
@@ -28,7 +28,7 @@ Node *getNodeByIndex(int index) {
 
 void updateNode(Node *node) {
     FILE *fp;
-    long int nodeRRN = node->index * NODE_SIZE;
+    long int nodeRRN = node->index * NODE_SIZE + 8;
     // printf("%ld\n", nodeRRN);
     fp = fopen(INDEX_FILE, "r+");
     fseek(fp, nodeRRN, SEEK_SET);
@@ -44,7 +44,7 @@ int addNewNodeToFile(Node *node) {
     writeNodeToFile(fp, node);
     int fileSize = ftell(fp);
     fclose(fp);
-    return fileSize/NODE_SIZE;
+    return (fileSize - 8)/NODE_SIZE;
 }
 
 int getNumberOfNodesFromFile() {
@@ -53,15 +53,16 @@ int getNumberOfNodesFromFile() {
     fseek(fp, 0, SEEK_END);
     int fileSize = ftell(fp);
     fclose(fp);
-    return fileSize/NODE_SIZE;
+    return (fileSize - 8)/NODE_SIZE;
 }
 
 int addEntryToNode(Entry *entry, Node *node) {
-    // printf("1\n");
+    int index;
     if (node->numberOfEntries == 0) {
         node->entries[0] = *entry;
         node->numberOfEntries = 1;
         updateNode(node);
+        // free(node);
         return 0;
     }
     for (int i = node->numberOfEntries - 1; i >= 0; i--) {
@@ -72,12 +73,16 @@ int addEntryToNode(Entry *entry, Node *node) {
             node->entries[i] = *entry;
             node->numberOfEntries += 1;
             updateNode(node);
-            return i;
+            index = node->numberOfEntries -1;
+            // free(node);
+            return index;
         }
     }
     node->entries[node->numberOfEntries++] = *entry;
     updateNode(node);
-    return node->numberOfEntries;
+    index = node->numberOfEntries -1;
+    // free(node);
+    return index; // Subtrair 1 para encontrar o index
 }
 
 int checkIfNodeIsFull(Node *node) {
