@@ -29,7 +29,7 @@ typedef struct Student
 
 typedef struct BTree {
     int numberOfNodes;
-    Node *rootNode;
+    int rootNode;
 } BTree;
 
 #endif
