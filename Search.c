@@ -1,47 +1,49 @@
 #include "Includes.h"
 
-Result * getRRNByPrimaryKey(long int rrnCurrent, int nUSP){
-    FILE * fp;
-    Result * result;
-    int position = -1;
+void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP){
+    // printf("N_USP %d\n", nUSP);
+    int position = -1, nextIndex;
+    // result = (Result *) malloc(sizeof(Result));
+    // printf("FIND 1\n");
+    // result->node = getNodeByIndex(nodeIndex);
+    // printf("FIND 2\n");
+    Node *node = getNodeByIndex(nodeIndex);
+    // printf("FIND 3\n");
 
-    fp = fopen(INDEX_FILE, "rb");
-    fseek(fp, rrnCurrent, SEEK_SET);
-    fread(&result->node, NODE_SIZE, 1, fp);
-    fclose(fp);
+    position = keyPositionSearch(node->entries, 0, node->numberOfEntries, nUSP);
+    // printf("POSITION %d\n", position);
 
-    position = keyPositionSearch(result->node->entries, 0, result->node->numberOfEntries, nUSP);
-    
-    if(result->node->entries[position].key == nUSP){
-        result->entry = result->node->entries[position];
-        return result;
-    }else if(result->node->entries[position].key > nUSP){
-        if(position > 0)
-            return getRRNByPrimaryKey(result->node->entries[position-1].child, nUSP);
-        else
-            return getRRNByPrimaryKey(result->node->entries[0].child, nUSP); 
+    if(node->entries[position].key == nUSP){
+        result->entry = node->entries[position];
+        result->node = node;
+        return;
+    }else if(node->entries[position].key > nUSP){
+        if(position > 0) {
+            nextIndex = node->entries[position-1].child;
+            free(node);
+            getRRNByPrimaryKey(result, nextIndex, nUSP);
+        }
+        else {
+            nextIndex = node->entries[0].child;
+            free(node);
+            getRRNByPrimaryKey(result, nextIndex, nUSP);
+        }
     }else{
-        if(position < result->node->numberOfEntries - 1)
-            return getRRNByPrimaryKey(result->node->entries[position+1].child, nUSP);
+        if(position < node->numberOfEntries - 1) {
+            nextIndex = node->entries[position+1].child;
+            free(node);
+            getRRNByPrimaryKey(result, nextIndex, nUSP);
+        }
         else{
-            if(result->node->nextNode == -1){
-                result->entry = result->node->entries[position - 1];
-                result->node = NULL;
-                return result;
+            if(node->nextNode == -1){
+                result->entry.key = -1;
+                result->node = node;
+                return;
             }else{
-                result->node = getNodeByIndex(result->node->nextNode);
-                position = keyPositionSearch(result->node->entries, 0, result->node->numberOfEntries, nUSP);
-
-                if(result->node->entries[position].key == nUSP){
-                    result->entry = result->node->entries[position];
-                    return result;
-                }else if(result->node->entries[position].key > nUSP){
-                    if(position > 0)
-                        return getRRNByPrimaryKey(result->node->entries[position-1].child, nUSP);
-                    else
-                        return getRRNByPrimaryKey(result->node->entries[0].child, nUSP); 
-                } 
-            }   
+                nextIndex = node->nextNode;
+                free(node);
+                getRRNByPrimaryKey(result, nextIndex, nUSP);
+            }
         }
     }
 }
@@ -49,7 +51,7 @@ Result * getRRNByPrimaryKey(long int rrnCurrent, int nUSP){
 //Função que pega a posição do primeiro valor maior, que o valor que se quer encontrar, ou a posição do mesmo.
 int keyPositionSearch(Entry * entries, int start, int end, int value) {
     int middle = (start + end) / 2;
-    
+
     while( start <= end ){
         middle = (start + end) / 2;
 
