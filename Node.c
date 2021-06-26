@@ -57,9 +57,11 @@ int getNumberOfNodesFromFile() {
 }
 
 int addEntryToNode(Entry *entry, Node *node) {
+    // printf("1\n");
     if (node->numberOfEntries == 0) {
         node->entries[0] = *entry;
-        node->numberOfEntries += 1;
+        node->numberOfEntries = 1;
+        updateNode(node);
         return 0;
     }
     for (int i = node->numberOfEntries - 1; i >= 0; i--) {
@@ -69,10 +71,13 @@ int addEntryToNode(Entry *entry, Node *node) {
             }
             node->entries[i] = *entry;
             node->numberOfEntries += 1;
+            updateNode(node);
             return i;
         }
     }
     node->entries[node->numberOfEntries++] = *entry;
+    updateNode(node);
+    return node->numberOfEntries;
 }
 
 int checkIfNodeIsFull(Node *node) {
