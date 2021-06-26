@@ -14,5 +14,6 @@
 #include "BTree.h"
 #include "Insert.h"
 #include "ReadCSVInput.h"
+#include "Search.h"
 
 #endif
