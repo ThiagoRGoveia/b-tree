@@ -31,7 +31,6 @@ int main()
     int nUsp;
     Search search;
     // Node *rootNode;
-    // printf("%d\n", bTree->rootNode);
     while (!feof(stdin)) {
         option = getOptionFromCSV();
         // rootNode = getNodeByIndex(bTree->rootNode);
@@ -85,6 +84,8 @@ int main()
         } else if (!strcmp(option, "update")) {
         } else if (!strcmp(option, "exit")) {
             break;
+        } else if (!strcmp(option, "root")) {
+            printf("%d\n", bTree->rootNode);
         }
         // free(rootNode);
         free(option);

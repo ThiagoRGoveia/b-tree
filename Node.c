@@ -67,9 +67,9 @@ int addEntryToNode(Entry *entry, Node *node) {
         // printNode(node);
         return 0;
     }
-    for (int i = node->numberOfEntries - 1; i >= 0; i--) {
+    for (int i = 0; i < node->numberOfEntries; i++) {
         if (node->entries[i].key > entry->key) {
-            for (int j = node->numberOfEntries - 2; j >= i; j--) {
+            for (int j = node->numberOfEntries - 1; j >= i; j--) {
                 node->entries[j + 1] = node->entries[j];
             }
             node->entries[i] = *entry;
@@ -88,7 +88,7 @@ int addEntryToNode(Entry *entry, Node *node) {
                 }
             }
             updateNode(node);
-            // printNode(node);
+            printNode(node);
             return i;
         }
     }
@@ -122,7 +122,6 @@ void removeEntryAndRearrangeNode(Entry *entry, Node *node) {
     if (entry->key != node->entries[node->numberOfEntries - 1].key) {
         int indexToBeRemoved = - 1;
         int i = 0;
-        // MUDAR PRA BINARY SEARCH
         while (indexToBeRemoved < 0 && i < node->numberOfEntries) {
             if (node->entries[i].key == entry->key) {
                 indexToBeRemoved = i;
@@ -148,6 +147,7 @@ void removeEntry(Entry *entry) {
 }
 
 void printNode(Node *node) {
+    printf("---\n");
     printf("Index %d\n",node->index);
     for (int i = 0; i < NODE_MAX_ENTRIES; i++) {
         printf("Key [%d] %d\n", i,node->entries[i].key);
