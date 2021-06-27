@@ -70,7 +70,7 @@ int main()
 
             if(result.entry.key < 0){
                 printf("Registro nao encontrado!\n");
-            }else{
+            } else{
                 // printf("%ld", result->entry.rrn);
                 Student * student = getStudentByRRN(result.entry.rrn);
                 printStudent(student);
@@ -82,6 +82,22 @@ int main()
             free(search.history);
 
         } else if (!strcmp(option, "update")) {
+            student = readStudentFromCSV();
+            search.history = (int *) malloc(sizeof(int));
+            search.history[0] = bTree->rootNode;
+            search.currentIndex = 0;
+            getRRNByPrimaryKey(&result, bTree->rootNode, student->nUSP, &search);
+            if(result.entry.key < 0){
+                printf("Registro nao encontrado!\n");
+            } else{
+                setStudentByRRN(result.entry.rrn, student);
+                free(student);
+            }
+            result.entry.key = -1;
+            result.node = NULL;
+            search.currentIndex = -1;
+            free(search.history);
+
         } else if (!strcmp(option, "exit")) {
             break;
         } else if (!strcmp(option, "root")) {
