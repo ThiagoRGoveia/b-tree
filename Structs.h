@@ -32,4 +32,9 @@ typedef struct BTree {
     int rootNode;
 } BTree;
 
+typedef struct Search {
+    int currentIndex;
+    int *history;
+} Search;
+
 #endif

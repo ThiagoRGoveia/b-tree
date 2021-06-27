@@ -9,7 +9,7 @@ typedef struct result {
 } Result;
 
 // Result * getRRNByPrimaryKey(long int rrnCurrent, int nUSP);
-void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP);
+void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP, Search *search);
 int keyPositionSearch(Entry * entries, int start, int end, int value);
 
 #endif

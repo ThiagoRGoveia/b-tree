@@ -18,7 +18,7 @@ Node *createNodeObject() {
 Node *getNodeByIndex(int index) {
     FILE *fp;
     Node *node;
-    long int nodeRRN = index * NODE_SIZE + 8;
+    long int nodeRRN = index * NODE_SIZE + HEADER_OFFSET;
     fp = fopen(INDEX_FILE, "r");
     fseek(fp, nodeRRN, SEEK_SET);
     node = readNodeFromFile(fp);
@@ -28,7 +28,7 @@ Node *getNodeByIndex(int index) {
 
 void updateNode(Node *node) {
     FILE *fp;
-    long int nodeRRN = node->index * NODE_SIZE + 8;
+    long int nodeRRN = node->index * NODE_SIZE + HEADER_OFFSET;
     // printf("%ld\n", nodeRRN);
     fp = fopen(INDEX_FILE, "r+");
     fseek(fp, nodeRRN, SEEK_SET);
@@ -57,35 +57,56 @@ int getNumberOfNodesFromFile() {
 }
 
 int addEntryToNode(Entry *entry, Node *node) {
-    int index;
+    int childHolder;
+    // printf("ADD to Node: %d\nKey: %d\nChild: %d\n", node->index, entry->key, entry->child);
     if (node->numberOfEntries == 0) {
         node->entries[0] = *entry;
         node->numberOfEntries = 1;
         updateNode(node);
         // free(node);
-        printNode(node);
+        // printNode(node);
         return 0;
     }
     for (int i = node->numberOfEntries - 1; i >= 0; i--) {
         if (node->entries[i].key > entry->key) {
-            for (int j = node->numberOfEntries - 1; j >= i; j--) {
+            for (int j = node->numberOfEntries - 2; j >= i; j--) {
                 node->entries[j + 1] = node->entries[j];
             }
             node->entries[i] = *entry;
-            node->numberOfEntries += 1;
+            node->numberOfEntries++;
+            // Se a entrada nova possui um filho então trata-se de uma promoção,
+            // inverter o filho da entrada nova com o filho da proxima entrada ou nextNode
+            if (entry->child > 0) {
+                if (i < node->numberOfEntries - 1) {
+                    childHolder = node->entries[i].child;
+                    node->entries[i].child = node->entries[i + 1].child;
+                    node->entries[i + 1].child = childHolder;
+                } else {
+                    childHolder = node->entries[i].child;
+                    node->entries[i].child = node->nextNode;
+                    node->nextNode = childHolder;
+                }
+            }
             updateNode(node);
-            index = node->numberOfEntries -1;
-            // free(node);
-            printNode(node);
-            return index;
+            // printNode(node);
+            return i;
         }
     }
-    node->entries[node->numberOfEntries++] = *entry;
+    node->entries[node->numberOfEntries] = *entry;
+    // Se a entrada nova possui um filho então trata-se de uma promoção,
+    // inverter o filho da entrada nova com o filho da proxima entrada ou nextNode
+    if (entry->child > 0) {
+        childHolder = node->entries[node->numberOfEntries].child;
+        // printf("FFFCCASCASASCC %d\n", node->nextNode);
+        node->entries[node->numberOfEntries].child = node->nextNode;
+        node->nextNode = childHolder;
+    }
+    node->numberOfEntries++;
+
     updateNode(node);
-    index = node->numberOfEntries -1;
-    printNode(node);
+    // printNode(node);
     // free(node);
-    return index; // Subtrair 1 para encontrar o index
+    return node->numberOfEntries;
 }
 
 int checkIfNodeIsFull(Node *node) {
@@ -136,4 +157,13 @@ void printNode(Node *node) {
     printf("Parent %d\n",node->parentNode);
     printf("Number of entries %d\n",node->numberOfEntries);
     printf("---\n");
+}
+
+void updateParentNode(int nodeIndex, int newParentIndex) {
+    FILE *fp;
+    long int fieldRRN = nodeIndex * NODE_SIZE + HEADER_OFFSET + PARENT_NODE_OFFSET;
+    fp = fopen(INDEX_FILE, "r+");
+    fseek(fp, fieldRRN, SEEK_SET);
+    writeParentNodeToFile(fp, newParentIndex);
+    fclose(fp);
 }

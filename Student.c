@@ -31,11 +31,11 @@ long int saveNewStudent(Student *student) {
 
 void printStudent(Student *student) {
     printf("-------------------------------\n");
-    printf("%d\n", student->nUSP);
-    printf("%s\n", student->name);
-    printf("%s\n", student->surname);
-    printf("%s\n", student->course);
-    printf("%.2f\n", student->grade);
+    printf("nUSP: %d\n", student->nUSP);
+    printf("Nome: %s\n", student->name);
+    printf("Sobrenome: %s\n", student->surname);
+    printf("Curso: %s\n", student->course);
+    printf("Nota: %.2f\n", student->grade);
     printf("-------------------------------\n");
 }
 // // Quebra a linha de entrada e retorna parte por parte

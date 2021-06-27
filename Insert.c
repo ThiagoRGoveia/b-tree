@@ -1,96 +1,108 @@
 #include "Includes.h"
 
-int insertNewElement(BTree *bTree, Node *node, Entry *newEntry) {
-    // printf("NODE NUMBER_OF_ENTRIES %d\n", node->numberOfEntries);
+int insertNewEntry(BTree *bTree, Entry *newEntry, Search *search) {
+    Node *node;
+    int nodeIndex;
+    if (search->currentIndex == 0) {
+        nodeIndex = bTree->rootNode;
+    } else {
+        nodeIndex = search->history[search->currentIndex--];
+    }
+    node = getNodeByIndex(nodeIndex);
+    // printf("INSERTING TO NODE %d\n", nodeIndex);
+    int insertedEntryIndex;
     if (node->numberOfEntries == NODE_MAX_ENTRIES) {
-        if (node->parentNode > 0) {
-            printf("SPLIT_LEAVE_NODE\n");
-            return hadleLeaveNodeOverflow(bTree, node, newEntry);
+        if (node->index != bTree->rootNode) {
+            // printf("SPLIT_LEAVE_NODE\n");
+            free(node);
+            return hadleLeaveNodeOverflow(bTree, nodeIndex, newEntry, search);
         } else {
-            printf("SPLIT_ROOT_NODE\n");
-            handleRootNodeOverflow(bTree, node, newEntry);
+            // printf("SPLIT_ROOT_NODE\n");
+            free(node);
+            handleRootNodeOverflow(bTree, nodeIndex, newEntry, search);
             return 0;
         }
     } else {
-        printf("ADD_ENTRY\n");
-        return addEntryToNode(newEntry, node);
+        // printf("ADD_ENTRY\n");
+        insertedEntryIndex = addEntryToNode(newEntry, node);
+        free(node);
+        return insertedEntryIndex;
     }
 }
 
-int hadleLeaveNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
-    Node *newLeaveNode, *parentNode;
-    printf("GET PARENT NODE\n");
-    parentNode = getNodeByIndex(node->parentNode);
-    printf("CREATE NEW LEAVE NODE.2\n");
+
+int hadleLeaveNodeOverflow(BTree *bTree, int nodeIndex, Entry *newEntry, Search *search) {
+    Node *newLeaveNode, *node;
+
+    node = getNodeByIndex(nodeIndex);
+
+    // printf("CREATE NEW LEAVE NODE\n");
     newLeaveNode = splitNode(bTree, node, newEntry);
-    // printf("SPLIT_LEAVE_NODE.3\n");
-
-    // newLeaveNode->entries[0].child = node->index;
-
-    int promotedNewIndex = promoteEntry(bTree, newLeaveNode, parentNode);
-    printf("PROMOTING KEY %d\n", promotedNewIndex);
-
-    if (parentNode->entries[promotedNewIndex + 1].key >= 0) {
-        parentNode->entries[promotedNewIndex + 1].child = newLeaveNode->index;
-    } else {
-        parentNode->nextNode = newLeaveNode->index;
-    }
-
-
-    parentNode->entries[promotedNewIndex].child = node->index;
-    printf("PARENT NODE \n");
-    printNode(parentNode);
-    printf("NEW LEAVE NODE \n");
-    printNode(newLeaveNode);
-    printf("ORIGIN NODE \n");
-    printNode(node);
+    node->nextNode = newLeaveNode->entries[0].child; // O nó original terá como next node o filho da chave a ser promovida
+    newLeaveNode->entries[0].child = newLeaveNode->index; // A chave a ser promovida terá o novo nó como filho, esse filho será trocado com a chave seguinte no nó pai
 
     updateNode(node);
-    updateNode(parentNode);
     updateNode(newLeaveNode);
-    // free(parentNode);
-    // free(newLeaveNode);
-    // printf("SPLIT_LEAVE_NODE.6\n");
+    int promotedNewIndex = promoteEntry(bTree, newLeaveNode, search);
+    // printf("PROMOTING KEY %d\n", promotedNewIndex);
+
+    // printf("NEW LEAVE NODE \n");
+    // printNode(newLeaveNode);
+    // printf("ORIGIN NODE \n");
+    // printNode(node);
+
+    updateNode(node);
+    updateNode(newLeaveNode);
+    free(node);
+    free(newLeaveNode);
+    return promotedNewIndex;
 }
 
-void handleRootNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
-    Node *newRootNode, *newLeaveNode;
+int handleRootNodeOverflow(BTree *bTree, int nodeIndex, Entry *newEntry, Search *search) {
+    Node *newRootNode, *newLeaveNode, *node;
     // printf("SPLIT_ROOT_NODE.1\n");
+    node = getNodeByIndex(nodeIndex);
 
     newRootNode = createNewNode(bTree);
     // printf("SPLIT_ROOT_NODE.2\n");
     newLeaveNode = splitNode(bTree, node, newEntry);
     // printf("SPLIT_ROOT_NODE.3\n");
 
-    newLeaveNode->entries[0].child = node->index;
-    newRootNode->nextNode = newLeaveNode->index;
-    newLeaveNode->parentNode = newRootNode->index;
-    node->parentNode = newRootNode->index;
-    bTree->rootNode = newRootNode->index;
-
-    int index = promoteEntry(bTree, newLeaveNode, newRootNode);
-    printf("PROMOTING KEY %d\n", index);
-    // printf("SPLIT_ROOT_NODE.4\n");
-    printf("PARENT NODE \n");
-    printNode(newRootNode);
-    printf("NEW LEAVE NODE \n");
-    printNode(newLeaveNode);
-    printf("ORIGIN NODE \n");
-    printNode(node);
-
+    // printf("FFFCCASCASASCSDABNKVJDNVNSDLVKLSDNASÇAÇLMMÇASLC %d\n", node->nextNode);
+    node->nextNode = newLeaveNode->entries[0].child; // nextNode do nó original será o o filho da chave a ser promovida
+    newLeaveNode->entries[0].child = node->index; // O nó original tera como nextNode o filho da chave a ser promovida
+    newRootNode->nextNode = newLeaveNode->index; // O nextNode do novo nó raiz é o novo nó folha
+    // newLeaveNode->parentNode = newRootNode->index;
+    // node->parentNode = newRootNode->index;
     updateNode(newRootNode);
+    bTree->rootNode = newRootNode->index; // Atualizar nó raiz da btree
+    updateNode(newLeaveNode);
+    updateNode(node);
+    int promotedNewIndex = promoteEntry(bTree, newLeaveNode, search);
+    // printf("PROMOTING KEY %d\n", promotedNewIndex);
+    // printf("SPLIT_ROOT_NODE.4\n");
+    // printf("PARENT NODE \n");
+    // // printNode(newRootNode);
+    // printf("NEW LEAVE NODE \n");
+    // // printNode(newLeaveNode);
+    // printf("ORIGIN NODE \n");
+    // printNode(node);
+
     updateNode(node);
     updateNode(newLeaveNode);
     // printf("SPLIT_ROOT_NODE.5\n");
-    // free(newLeaveNode);
-    // free(node);
+    free(newRootNode);
+    free(newLeaveNode);
+    free(node);
     // printf("SPLIT_ROOT_NODE.6\n");
+    return promotedNewIndex;
 }
 
 Node *splitNode(BTree *bTree, Node *node, Entry *newEntry) {
     int middle = NODE_MAX_ENTRIES / 2, splitIndex, isNewKeySmaller;
     Node *newNode;
     newNode = createNewNode(bTree);
+    newNode->nextNode = node->nextNode;
 
     if (node->entries[middle].key > newEntry->key) {
         isNewKeySmaller = 1;
@@ -101,6 +113,10 @@ Node *splitNode(BTree *bTree, Node *node, Entry *newEntry) {
     }
     for (int i = splitIndex; i < NODE_MAX_ENTRIES; i++) {
         addSortedEntryToNode(&node->entries[i], newNode);
+        // if (node->entries[i].child > 0) {
+        //     printf("UPDATE PARENT OF NODE %d FROM %d TO %d\n", node->entries[i].child, node->index, newNode->index);
+        //     updateParentNode(node->entries[i].child, newNode->index);
+        // }
         removeEntry(&node->entries[i]);
         node->numberOfEntries--;
     }
@@ -109,16 +125,16 @@ Node *splitNode(BTree *bTree, Node *node, Entry *newEntry) {
     } else {
         addEntryToNode(newEntry, newNode);
     }
-    newNode->parentNode = node->parentNode;
+    // newNode->parentNode = node->parentNode;
     node->numberOfEntries = splitIndex;
     return newNode;
 }
 
-int promoteEntry(BTree *bTree, Node *childNode, Node *parentNode) {
-    int index = insertNewElement(
+int promoteEntry(BTree *bTree, Node *childNode, Search *search) {
+    int index = insertNewEntry(
         bTree,
-        parentNode,
-        &childNode->entries[0]
+        &childNode->entries[0],
+        search
     );
     removeEntryAndRearrangeNode(&childNode->entries[0], childNode);
     return index;

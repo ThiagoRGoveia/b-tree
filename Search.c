@@ -1,17 +1,12 @@
 #include "Includes.h"
 
-void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP){
-    // printf("N_USP %d\n", nUSP);
+void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP, Search *search){
     int position = -1, nextIndex;
-    // result = (Result *) malloc(sizeof(Result));
-    // printf("FIND 1\n");
-    // result->node = getNodeByIndex(nodeIndex);
-    // printf("FIND 2\n");
+
+
     Node *node = getNodeByIndex(nodeIndex);
-    // printf("FIND 3\n");
 
     position = keyPositionSearch(node->entries, 0, node->numberOfEntries, nUSP);
-    // printf("POSITION %d\n", position);
 
     if(node->entries[position].key == nUSP){
         result->entry = node->entries[position];
@@ -20,19 +15,30 @@ void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP){
     }else if(node->entries[position].key > nUSP){
         if(position > 0) {
             nextIndex = node->entries[position-1].child;
+            search->history = (int *) realloc(search->history, sizeof(int) * ++search->currentIndex + 1);
+            search->history[search->currentIndex] = nextIndex;
             // free(node);
-            getRRNByPrimaryKey(result, nextIndex, nUSP);
+            getRRNByPrimaryKey(result, nextIndex, nUSP, search);
         }
         else {
+            if (node->entries[0].child == -1) {
+                result->entry.key = -1;
+                result->node = node;
+                return;
+            }
             nextIndex = node->entries[0].child;
+            search->history = (int *) realloc(search->history, sizeof(int) * ++search->currentIndex + 1);
+            search->history[search->currentIndex] = nextIndex;
             // free(node);
-            getRRNByPrimaryKey(result, nextIndex, nUSP);
+            getRRNByPrimaryKey(result, nextIndex, nUSP, search);
         }
     }else{
         if(position < node->numberOfEntries - 1) {
             nextIndex = node->entries[position+1].child;
+            search->history = (int *) realloc(search->history, sizeof(int) * ++search->currentIndex + 1);
+            search->history[search->currentIndex] = nextIndex;
             // free(node);
-            getRRNByPrimaryKey(result, nextIndex, nUSP);
+            getRRNByPrimaryKey(result, nextIndex, nUSP, search);
         }
         else{
             if(node->nextNode == -1){
@@ -41,8 +47,10 @@ void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP){
                 return;
             }else{
                 nextIndex = node->nextNode;
+                search->history = (int *) realloc(search->history, sizeof(int) * ++search->currentIndex + 1);
+                search->history[search->currentIndex] = nextIndex;
                 // free(node);
-                getRRNByPrimaryKey(result, nextIndex, nUSP);
+                getRRNByPrimaryKey(result, nextIndex, nUSP, search);
             }
         }
     }
