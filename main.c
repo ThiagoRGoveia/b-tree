@@ -70,7 +70,26 @@ int main()
 
             free(result);
         }else if(strcmp(option, "update") == 0){
+            scanf("%d", &nUSP);
 
+            Result * result = getRRNByPrimaryKey(0, nUSP);
+
+            if(result->node == NULL){
+                printf("Registro nao encontrado!\n");
+            }else{
+        
+                Student * student = getStudentByRRN(result->entry.key);
+                update(student);
+
+                printf("-------------------------------\n");
+
+                printf("nUSP: %d\nNome: %s\nSobrenome: %s\nCurso: %s\nNota: %.2f\n",
+                student->nUSP, student->name, student->surname, student->course, student->grade);
+
+                printf("-------------------------------\n\n");
+
+                free(student);
+            }
 
         }else if(strcmp(option, "exit") == 0){
             exit(0);

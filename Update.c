@@ -1,7 +1,6 @@
 #include "Includes.h"
 
 // Quebra a linha de entrada e retorna parte por parte 
-/*
 Student *entrada_student(const char *string) {
     if (string == NULL){
     return NULL;
@@ -91,7 +90,7 @@ void updateToFile(FILE *fp, Student *student, long int RRN) {
     fwrite(student->surname, STRING_FIELD_SIZE, 1, fp);
     fwrite(student->course, STRING_FIELD_SIZE, 1, fp);
     fwrite(&student->grade, sizeof(float), 1, fp);
-} */
+} 
 
 void update(Student *student){
 

@@ -68,7 +68,7 @@ int main(){
 		case 3:
 
         char * entrada_aux = entrada+strlen(token)+1;
-         Student *student = entrada_student(entrada_aux);
+        Student *student = entrada_student(entrada_aux);
     
 
          if (student == NULL) {
