@@ -38,8 +38,8 @@ int main(){
                 printf("Input inválido!\n");
             } 
         else {
-
-                if (getRRNByPrimaryKey(0, student->nUSP) == 0) {
+                int testebusca; //só pra compilar enquanto n arrumo
+                if (testebusca == 0) {
                     // Caso falhe com código 0, significa que já existe
                     printf("O Registro ja existe!\n");
                 }
@@ -67,7 +67,7 @@ int main(){
         //se for a funcionalidade 3 Update
 		case 3:
 
-        char *entrada_aux = entrada+strlen(token)+1;
+        char * entrada_aux = entrada+strlen(token)+1;
          Student *student = entrada_student(entrada_aux);
     
 
@@ -75,23 +75,18 @@ int main(){
                 printf("Input inválido!\n");
             } 
         else {
-                long int n;
-                if (getRRNByPrimaryKey(n, student->nUSP) == 0) {
-                    // Caso falhe com código 0, significa que já existe
-                    printf("O Registro ja existe!\n");
+                char arquivo[10] = "arquivo";
+                FILE * fp = fopen(arquivo , "w");
+                update(student);
+                /*Result * result = getRRNByPrimaryKey(0, student->nUSP);
+                if (result->node ) {
+                    // Caso falhe com código 0, significa que não existe
+                    printf("O Registro não foi encontrado!\n");
                 }
                 else {
-                             /* BTree *bTree;
-                             bTree = createBTree();
-                             addNewNodeToFile(bTree->rootNode);
-                             Entry entry;
-                             entry.key = 5;
-                             entry.child = 0;
-                             entry.rrn = 20;
-                            insertNewElement(bTree, bTree->rootNode, &entry); */
-
-                        setStudentByRRN(student->nUSP, student);
-                }
+                        updateToFile(fp, student, result->node);
+                        fclose(fp);	
+                }*/
 	
         }
             

@@ -15,5 +15,6 @@
 #include "Insert.h"
 #include "ReadCSVInput.h"
 #include "Search.h"
+#include "Update.h"
 
 #endif
