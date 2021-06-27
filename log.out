@@ -1,0 +1,2322 @@
+./exec
+INSERT 1
+ADD_ENTRY
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] -1
+Child [1] -1
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 1
+---
+INSERT 2
+ADD_ENTRY
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 2
+---
+INSERT 3
+ADD_ENTRY
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] 3
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 3
+---
+INSERT 4
+ADD_ENTRY
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] 3
+Child [2] -1
+Key [3] 4
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 4
+---
+INSERT 5
+ADD_ENTRY
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] 3
+Child [2] -1
+Key [3] 4
+Child [3] -1
+Key [4] 5
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+INSERT 6
+ADD_ENTRY
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] 3
+Child [2] -1
+Key [3] 4
+Child [3] -1
+Key [4] 5
+Child [4] -1
+Key [5] 6
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 6
+---
+INSERT 7
+ADD_ENTRY
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] 3
+Child [2] -1
+Key [3] 4
+Child [3] -1
+Key [4] 5
+Child [4] -1
+Key [5] 6
+Child [5] -1
+Key [6] 7
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 7
+---
+INSERT 8
+ADD_ENTRY
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] 3
+Child [2] -1
+Key [3] 4
+Child [3] -1
+Key [4] 5
+Child [4] -1
+Key [5] 6
+Child [5] -1
+Key [6] 7
+Child [6] -1
+Key [7] 8
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 8
+---
+INSERT 9
+SPLIT_ROOT_NODE
+Index 2
+Key [0] 5
+Child [0] -1
+Key [1] 6
+Child [1] -1
+Key [2] 7
+Child [2] -1
+Key [3] 8
+Child [3] -1
+Key [4] 9
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] -1
+Child [1] -1
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 2
+Parent -1
+Number of entries 1
+---
+PROMOTING KEY 0
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] -1
+Child [1] -1
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 2
+Parent -1
+Number of entries 1
+---
+NEW LEAVE NODE
+Index 2
+Key [0] 6
+Child [0] -1
+Key [1] 7
+Child [1] -1
+Key [2] 8
+Child [2] -1
+Key [3] 9
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] 3
+Child [2] -1
+Key [3] 4
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+INSERT 10
+ADD_ENTRY
+Index 2
+Key [0] 6
+Child [0] -1
+Key [1] 7
+Child [1] -1
+Key [2] 8
+Child [2] -1
+Key [3] 9
+Child [3] -1
+Key [4] 10
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 5
+---
+INSERT 11
+ADD_ENTRY
+Index 2
+Key [0] 6
+Child [0] -1
+Key [1] 7
+Child [1] -1
+Key [2] 8
+Child [2] -1
+Key [3] 9
+Child [3] -1
+Key [4] 10
+Child [4] -1
+Key [5] 11
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 6
+---
+INSERT 12
+ADD_ENTRY
+Index 2
+Key [0] 6
+Child [0] -1
+Key [1] 7
+Child [1] -1
+Key [2] 8
+Child [2] -1
+Key [3] 9
+Child [3] -1
+Key [4] 10
+Child [4] -1
+Key [5] 11
+Child [5] -1
+Key [6] 12
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 7
+---
+INSERT 13
+ADD_ENTRY
+Index 2
+Key [0] 6
+Child [0] -1
+Key [1] 7
+Child [1] -1
+Key [2] 8
+Child [2] -1
+Key [3] 9
+Child [3] -1
+Key [4] 10
+Child [4] -1
+Key [5] 11
+Child [5] -1
+Key [6] 12
+Child [6] -1
+Key [7] 13
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 8
+---
+INSERT 14
+SPLIT_LEAVE_NODE
+GET PARENT NODE
+CREATE NEW LEAVE NODE.2
+Index 3
+Key [0] 10
+Child [0] -1
+Key [1] 11
+Child [1] -1
+Key [2] 12
+Child [2] -1
+Key [3] 13
+Child [3] -1
+Key [4] 14
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] -1
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 2
+Parent -1
+Number of entries 2
+---
+PROMOTING KEY 1
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 3
+Parent -1
+Number of entries 2
+---
+NEW LEAVE NODE
+Index 3
+Key [0] 11
+Child [0] -1
+Key [1] 12
+Child [1] -1
+Key [2] 13
+Child [2] -1
+Key [3] 14
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 2
+Key [0] 6
+Child [0] -1
+Key [1] 7
+Child [1] -1
+Key [2] 8
+Child [2] -1
+Key [3] 9
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+INSERT 15
+ADD_ENTRY
+Index 3
+Key [0] 11
+Child [0] -1
+Key [1] 12
+Child [1] -1
+Key [2] 13
+Child [2] -1
+Key [3] 14
+Child [3] -1
+Key [4] 15
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 5
+---
+INSERT 16
+ADD_ENTRY
+Index 3
+Key [0] 11
+Child [0] -1
+Key [1] 12
+Child [1] -1
+Key [2] 13
+Child [2] -1
+Key [3] 14
+Child [3] -1
+Key [4] 15
+Child [4] -1
+Key [5] 16
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 6
+---
+INSERT 17
+ADD_ENTRY
+Index 3
+Key [0] 11
+Child [0] -1
+Key [1] 12
+Child [1] -1
+Key [2] 13
+Child [2] -1
+Key [3] 14
+Child [3] -1
+Key [4] 15
+Child [4] -1
+Key [5] 16
+Child [5] -1
+Key [6] 17
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 7
+---
+INSERT 18
+ADD_ENTRY
+Index 3
+Key [0] 11
+Child [0] -1
+Key [1] 12
+Child [1] -1
+Key [2] 13
+Child [2] -1
+Key [3] 14
+Child [3] -1
+Key [4] 15
+Child [4] -1
+Key [5] 16
+Child [5] -1
+Key [6] 17
+Child [6] -1
+Key [7] 18
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 8
+---
+INSERT 19
+SPLIT_LEAVE_NODE
+GET PARENT NODE
+CREATE NEW LEAVE NODE.2
+Index 4
+Key [0] 15
+Child [0] -1
+Key [1] 16
+Child [1] -1
+Key [2] 17
+Child [2] -1
+Key [3] 18
+Child [3] -1
+Key [4] 19
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 3
+Parent -1
+Number of entries 3
+---
+PROMOTING KEY 2
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 4
+Parent -1
+Number of entries 3
+---
+NEW LEAVE NODE
+Index 4
+Key [0] 16
+Child [0] -1
+Key [1] 17
+Child [1] -1
+Key [2] 18
+Child [2] -1
+Key [3] 19
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 3
+Key [0] 11
+Child [0] -1
+Key [1] 12
+Child [1] -1
+Key [2] 13
+Child [2] -1
+Key [3] 14
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+INSERT 20
+ADD_ENTRY
+Index 4
+Key [0] 16
+Child [0] -1
+Key [1] 17
+Child [1] -1
+Key [2] 18
+Child [2] -1
+Key [3] 19
+Child [3] -1
+Key [4] 20
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 5
+---
+INSERT 21
+ADD_ENTRY
+Index 4
+Key [0] 16
+Child [0] -1
+Key [1] 17
+Child [1] -1
+Key [2] 18
+Child [2] -1
+Key [3] 19
+Child [3] -1
+Key [4] 20
+Child [4] -1
+Key [5] 21
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 6
+---
+INSERT 22
+ADD_ENTRY
+Index 4
+Key [0] 16
+Child [0] -1
+Key [1] 17
+Child [1] -1
+Key [2] 18
+Child [2] -1
+Key [3] 19
+Child [3] -1
+Key [4] 20
+Child [4] -1
+Key [5] 21
+Child [5] -1
+Key [6] 22
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 7
+---
+INSERT 23
+ADD_ENTRY
+Index 4
+Key [0] 16
+Child [0] -1
+Key [1] 17
+Child [1] -1
+Key [2] 18
+Child [2] -1
+Key [3] 19
+Child [3] -1
+Key [4] 20
+Child [4] -1
+Key [5] 21
+Child [5] -1
+Key [6] 22
+Child [6] -1
+Key [7] 23
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 8
+---
+INSERT 24
+SPLIT_LEAVE_NODE
+GET PARENT NODE
+CREATE NEW LEAVE NODE.2
+Index 5
+Key [0] 20
+Child [0] -1
+Key [1] 21
+Child [1] -1
+Key [2] 22
+Child [2] -1
+Key [3] 23
+Child [3] -1
+Key [4] 24
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 4
+Parent -1
+Number of entries 4
+---
+PROMOTING KEY 3
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 5
+Parent -1
+Number of entries 4
+---
+NEW LEAVE NODE
+Index 5
+Key [0] 21
+Child [0] -1
+Key [1] 22
+Child [1] -1
+Key [2] 23
+Child [2] -1
+Key [3] 24
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 4
+Key [0] 16
+Child [0] -1
+Key [1] 17
+Child [1] -1
+Key [2] 18
+Child [2] -1
+Key [3] 19
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+INSERT 25
+ADD_ENTRY
+Index 5
+Key [0] 21
+Child [0] -1
+Key [1] 22
+Child [1] -1
+Key [2] 23
+Child [2] -1
+Key [3] 24
+Child [3] -1
+Key [4] 25
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 5
+---
+INSERT 26
+ADD_ENTRY
+Index 5
+Key [0] 21
+Child [0] -1
+Key [1] 22
+Child [1] -1
+Key [2] 23
+Child [2] -1
+Key [3] 24
+Child [3] -1
+Key [4] 25
+Child [4] -1
+Key [5] 26
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 6
+---
+INSERT 27
+ADD_ENTRY
+Index 5
+Key [0] 21
+Child [0] -1
+Key [1] 22
+Child [1] -1
+Key [2] 23
+Child [2] -1
+Key [3] 24
+Child [3] -1
+Key [4] 25
+Child [4] -1
+Key [5] 26
+Child [5] -1
+Key [6] 27
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 7
+---
+INSERT 28
+ADD_ENTRY
+Index 5
+Key [0] 21
+Child [0] -1
+Key [1] 22
+Child [1] -1
+Key [2] 23
+Child [2] -1
+Key [3] 24
+Child [3] -1
+Key [4] 25
+Child [4] -1
+Key [5] 26
+Child [5] -1
+Key [6] 27
+Child [6] -1
+Key [7] 28
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 8
+---
+INSERT 29
+SPLIT_LEAVE_NODE
+GET PARENT NODE
+CREATE NEW LEAVE NODE.2
+Index 6
+Key [0] 25
+Child [0] -1
+Key [1] 26
+Child [1] -1
+Key [2] 27
+Child [2] -1
+Key [3] 28
+Child [3] -1
+Key [4] 29
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] 25
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 5
+Parent -1
+Number of entries 5
+---
+PROMOTING KEY 4
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] 25
+Child [4] 5
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 6
+Parent -1
+Number of entries 5
+---
+NEW LEAVE NODE
+Index 6
+Key [0] 26
+Child [0] -1
+Key [1] 27
+Child [1] -1
+Key [2] 28
+Child [2] -1
+Key [3] 29
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 5
+Key [0] 21
+Child [0] -1
+Key [1] 22
+Child [1] -1
+Key [2] 23
+Child [2] -1
+Key [3] 24
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+INSERT 30
+ADD_ENTRY
+Index 6
+Key [0] 26
+Child [0] -1
+Key [1] 27
+Child [1] -1
+Key [2] 28
+Child [2] -1
+Key [3] 29
+Child [3] -1
+Key [4] 30
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 5
+---
+INSERT 31
+ADD_ENTRY
+Index 6
+Key [0] 26
+Child [0] -1
+Key [1] 27
+Child [1] -1
+Key [2] 28
+Child [2] -1
+Key [3] 29
+Child [3] -1
+Key [4] 30
+Child [4] -1
+Key [5] 31
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 6
+---
+INSERT 32
+ADD_ENTRY
+Index 6
+Key [0] 26
+Child [0] -1
+Key [1] 27
+Child [1] -1
+Key [2] 28
+Child [2] -1
+Key [3] 29
+Child [3] -1
+Key [4] 30
+Child [4] -1
+Key [5] 31
+Child [5] -1
+Key [6] 32
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 7
+---
+INSERT 33
+ADD_ENTRY
+Index 6
+Key [0] 26
+Child [0] -1
+Key [1] 27
+Child [1] -1
+Key [2] 28
+Child [2] -1
+Key [3] 29
+Child [3] -1
+Key [4] 30
+Child [4] -1
+Key [5] 31
+Child [5] -1
+Key [6] 32
+Child [6] -1
+Key [7] 33
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 8
+---
+INSERT 34
+SPLIT_LEAVE_NODE
+GET PARENT NODE
+CREATE NEW LEAVE NODE.2
+Index 7
+Key [0] 30
+Child [0] -1
+Key [1] 31
+Child [1] -1
+Key [2] 32
+Child [2] -1
+Key [3] 33
+Child [3] -1
+Key [4] 34
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] 25
+Child [4] 5
+Key [5] 30
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 6
+Parent -1
+Number of entries 6
+---
+PROMOTING KEY 5
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] 25
+Child [4] 5
+Key [5] 30
+Child [5] 6
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 7
+Parent -1
+Number of entries 6
+---
+NEW LEAVE NODE
+Index 7
+Key [0] 31
+Child [0] -1
+Key [1] 32
+Child [1] -1
+Key [2] 33
+Child [2] -1
+Key [3] 34
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 6
+Key [0] 26
+Child [0] -1
+Key [1] 27
+Child [1] -1
+Key [2] 28
+Child [2] -1
+Key [3] 29
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+INSERT 35
+ADD_ENTRY
+Index 7
+Key [0] 31
+Child [0] -1
+Key [1] 32
+Child [1] -1
+Key [2] 33
+Child [2] -1
+Key [3] 34
+Child [3] -1
+Key [4] 35
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 5
+---
+INSERT 36
+ADD_ENTRY
+Index 7
+Key [0] 31
+Child [0] -1
+Key [1] 32
+Child [1] -1
+Key [2] 33
+Child [2] -1
+Key [3] 34
+Child [3] -1
+Key [4] 35
+Child [4] -1
+Key [5] 36
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 6
+---
+INSERT 37
+ADD_ENTRY
+Index 7
+Key [0] 31
+Child [0] -1
+Key [1] 32
+Child [1] -1
+Key [2] 33
+Child [2] -1
+Key [3] 34
+Child [3] -1
+Key [4] 35
+Child [4] -1
+Key [5] 36
+Child [5] -1
+Key [6] 37
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 7
+---
+INSERT 38
+ADD_ENTRY
+Index 7
+Key [0] 31
+Child [0] -1
+Key [1] 32
+Child [1] -1
+Key [2] 33
+Child [2] -1
+Key [3] 34
+Child [3] -1
+Key [4] 35
+Child [4] -1
+Key [5] 36
+Child [5] -1
+Key [6] 37
+Child [6] -1
+Key [7] 38
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 8
+---
+INSERT 39
+SPLIT_LEAVE_NODE
+GET PARENT NODE
+CREATE NEW LEAVE NODE.2
+Index 8
+Key [0] 35
+Child [0] -1
+Key [1] 36
+Child [1] -1
+Key [2] 37
+Child [2] -1
+Key [3] 38
+Child [3] -1
+Key [4] 39
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] 25
+Child [4] 5
+Key [5] 30
+Child [5] 6
+Key [6] 35
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 7
+Parent -1
+Number of entries 7
+---
+PROMOTING KEY 6
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] 25
+Child [4] 5
+Key [5] 30
+Child [5] 6
+Key [6] 35
+Child [6] 7
+Key [7] -1
+Child [7] -1
+Next node 8
+Parent -1
+Number of entries 7
+---
+NEW LEAVE NODE
+Index 8
+Key [0] 36
+Child [0] -1
+Key [1] 37
+Child [1] -1
+Key [2] 38
+Child [2] -1
+Key [3] 39
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 7
+Key [0] 31
+Child [0] -1
+Key [1] 32
+Child [1] -1
+Key [2] 33
+Child [2] -1
+Key [3] 34
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+INSERT 40
+ADD_ENTRY
+Index 8
+Key [0] 36
+Child [0] -1
+Key [1] 37
+Child [1] -1
+Key [2] 38
+Child [2] -1
+Key [3] 39
+Child [3] -1
+Key [4] 40
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 5
+---
+INSERT 41
+ADD_ENTRY
+Index 8
+Key [0] 36
+Child [0] -1
+Key [1] 37
+Child [1] -1
+Key [2] 38
+Child [2] -1
+Key [3] 39
+Child [3] -1
+Key [4] 40
+Child [4] -1
+Key [5] 41
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 6
+---
+INSERT 42
+ADD_ENTRY
+Index 8
+Key [0] 36
+Child [0] -1
+Key [1] 37
+Child [1] -1
+Key [2] 38
+Child [2] -1
+Key [3] 39
+Child [3] -1
+Key [4] 40
+Child [4] -1
+Key [5] 41
+Child [5] -1
+Key [6] 42
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 7
+---
+INSERT 43
+ADD_ENTRY
+Index 8
+Key [0] 36
+Child [0] -1
+Key [1] 37
+Child [1] -1
+Key [2] 38
+Child [2] -1
+Key [3] 39
+Child [3] -1
+Key [4] 40
+Child [4] -1
+Key [5] 41
+Child [5] -1
+Key [6] 42
+Child [6] -1
+Key [7] 43
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 8
+---
+INSERT 44
+SPLIT_LEAVE_NODE
+GET PARENT NODE
+CREATE NEW LEAVE NODE.2
+Index 9
+Key [0] 40
+Child [0] -1
+Key [1] 41
+Child [1] -1
+Key [2] 42
+Child [2] -1
+Key [3] 43
+Child [3] -1
+Key [4] 44
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] 25
+Child [4] 5
+Key [5] 30
+Child [5] 6
+Key [6] 35
+Child [6] 7
+Key [7] 40
+Child [7] -1
+Next node 8
+Parent -1
+Number of entries 8
+---
+PROMOTING KEY 7
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] 25
+Child [4] 5
+Key [5] 30
+Child [5] 6
+Key [6] 35
+Child [6] 7
+Key [7] 40
+Child [7] 8
+Next node 9
+Parent -1
+Number of entries 8
+---
+NEW LEAVE NODE
+Index 9
+Key [0] 41
+Child [0] -1
+Key [1] 42
+Child [1] -1
+Key [2] 43
+Child [2] -1
+Key [3] 44
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 8
+Key [0] 36
+Child [0] -1
+Key [1] 37
+Child [1] -1
+Key [2] 38
+Child [2] -1
+Key [3] 39
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+INSERT 45
+ADD_ENTRY
+Index 9
+Key [0] 41
+Child [0] -1
+Key [1] 42
+Child [1] -1
+Key [2] 43
+Child [2] -1
+Key [3] 44
+Child [3] -1
+Key [4] 45
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 5
+---
+INSERT 46
+ADD_ENTRY
+Index 9
+Key [0] 41
+Child [0] -1
+Key [1] 42
+Child [1] -1
+Key [2] 43
+Child [2] -1
+Key [3] 44
+Child [3] -1
+Key [4] 45
+Child [4] -1
+Key [5] 46
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 6
+---
+INSERT 47
+ADD_ENTRY
+Index 9
+Key [0] 41
+Child [0] -1
+Key [1] 42
+Child [1] -1
+Key [2] 43
+Child [2] -1
+Key [3] 44
+Child [3] -1
+Key [4] 45
+Child [4] -1
+Key [5] 46
+Child [5] -1
+Key [6] 47
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 7
+---
+INSERT 48
+ADD_ENTRY
+Index 9
+Key [0] 41
+Child [0] -1
+Key [1] 42
+Child [1] -1
+Key [2] 43
+Child [2] -1
+Key [3] 44
+Child [3] -1
+Key [4] 45
+Child [4] -1
+Key [5] 46
+Child [5] -1
+Key [6] 47
+Child [6] -1
+Key [7] 48
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 8
+---
+INSERT 49
+SPLIT_LEAVE_NODE
+GET PARENT NODE
+CREATE NEW LEAVE NODE.2
+Index 10
+Key [0] 45
+Child [0] -1
+Key [1] 46
+Child [1] -1
+Key [2] 47
+Child [2] -1
+Key [3] 48
+Child [3] -1
+Key [4] 49
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+SPLIT_ROOT_NODE
+Index 12
+Key [0] 25
+Child [0] 5
+Key [1] 30
+Child [1] 6
+Key [2] 35
+Child [2] 7
+Key [3] 40
+Child [3] 8
+Key [4] 45
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent -1
+Number of entries 5
+---
+ADD_ENTRY
+Index 11
+Key [0] 25
+Child [0] 1
+Key [1] -1
+Child [1] -1
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 12
+Parent -1
+Number of entries 1
+---
+PROMOTING KEY 0
+PARENT NODE
+Index 11
+Key [0] 25
+Child [0] 1
+Key [1] -1
+Child [1] -1
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 12
+Parent -1
+Number of entries 1
+---
+NEW LEAVE NODE
+Index 12
+Key [0] 30
+Child [0] 6
+Key [1] 35
+Child [1] 7
+Key [2] 40
+Child [2] 8
+Key [3] 45
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 11
+Number of entries 4
+---
+ORIGIN NODE
+Index 1
+Key [0] 5
+Child [0] 0
+Key [1] 10
+Child [1] 2
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 9
+Parent 11
+Number of entries 4
+---
+PROMOTING KEY 0
+PARENT NODE
+Index 1
+Key [0] 5
+Child [0] 9
+Key [1] 10
+Child [1] 10
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 9
+Parent 11
+Number of entries 4
+---
+NEW LEAVE NODE
+Index 10
+Key [0] 46
+Child [0] -1
+Key [1] 47
+Child [1] -1
+Key [2] 48
+Child [2] -1
+Key [3] 49
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+ORIGIN NODE
+Index 9
+Key [0] 41
+Child [0] -1
+Key [1] 42
+Child [1] -1
+Key [2] 43
+Child [2] -1
+Key [3] 44
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+
+FINAL
+---
+Index 0
+Key [0] 1
+Child [0] -1
+Key [1] 2
+Child [1] -1
+Key [2] 3
+Child [2] -1
+Key [3] 4
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 1
+Key [0] 5
+Child [0] 9
+Key [1] 10
+Child [1] 10
+Key [2] 15
+Child [2] 3
+Key [3] 20
+Child [3] 4
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 9
+Parent 11
+Number of entries 4
+---
+---
+Index 2
+Key [0] 6
+Child [0] -1
+Key [1] 7
+Child [1] -1
+Key [2] 8
+Child [2] -1
+Key [3] 9
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 3
+Key [0] 11
+Child [0] -1
+Key [1] 12
+Child [1] -1
+Key [2] 13
+Child [2] -1
+Key [3] 14
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 4
+Key [0] 16
+Child [0] -1
+Key [1] 17
+Child [1] -1
+Key [2] 18
+Child [2] -1
+Key [3] 19
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 5
+Key [0] 21
+Child [0] -1
+Key [1] 22
+Child [1] -1
+Key [2] 23
+Child [2] -1
+Key [3] 24
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 6
+Key [0] 26
+Child [0] -1
+Key [1] 27
+Child [1] -1
+Key [2] 28
+Child [2] -1
+Key [3] 29
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 7
+Key [0] 31
+Child [0] -1
+Key [1] 32
+Child [1] -1
+Key [2] 33
+Child [2] -1
+Key [3] 34
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 8
+Key [0] 36
+Child [0] -1
+Key [1] 37
+Child [1] -1
+Key [2] 38
+Child [2] -1
+Key [3] 39
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 9
+Key [0] 41
+Child [0] -1
+Key [1] 42
+Child [1] -1
+Key [2] 43
+Child [2] -1
+Key [3] 44
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 10
+Key [0] 46
+Child [0] -1
+Key [1] 47
+Child [1] -1
+Key [2] 48
+Child [2] -1
+Key [3] 49
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 1
+Number of entries 4
+---
+---
+Index 11
+Key [0] 25
+Child [0] 1
+Key [1] -1
+Child [1] -1
+Key [2] -1
+Child [2] -1
+Key [3] -1
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node 12
+Parent -1
+Number of entries 1
+---
+---
+Index 12
+Key [0] 30
+Child [0] 6
+Key [1] 35
+Child [1] 7
+Key [2] 40
+Child [2] 8
+Key [3] 45
+Child [3] -1
+Key [4] -1
+Child [4] -1
+Key [5] -1
+Child [5] -1
+Key [6] -1
+Child [6] -1
+Key [7] -1
+Child [7] -1
+Next node -1
+Parent 11
+Number of entries 4
+---

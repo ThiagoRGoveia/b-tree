@@ -4,31 +4,31 @@ int insertNewElement(BTree *bTree, Node *node, Entry *newEntry) {
     // printf("NODE NUMBER_OF_ENTRIES %d\n", node->numberOfEntries);
     if (node->numberOfEntries == NODE_MAX_ENTRIES) {
         if (node->parentNode > 0) {
-            // printf("SPLIT_LEAVE_NODE\n");
+            printf("SPLIT_LEAVE_NODE\n");
             return hadleLeaveNodeOverflow(bTree, node, newEntry);
         } else {
-            // printf("SPLIT_ROOT_NODE\n");
+            printf("SPLIT_ROOT_NODE\n");
             handleRootNodeOverflow(bTree, node, newEntry);
             return 0;
         }
     } else {
-        // printf("ADD_ENTRY\n");
+        printf("ADD_ENTRY\n");
         return addEntryToNode(newEntry, node);
     }
 }
 
 int hadleLeaveNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
     Node *newLeaveNode, *parentNode;
-    // printf("SPLIT_LEAVE_NODE.1\n");
+    printf("GET PARENT NODE\n");
     parentNode = getNodeByIndex(node->parentNode);
-    // printf("SPLIT_LEAVE_NODE.2\n");
+    printf("CREATE NEW LEAVE NODE.2\n");
     newLeaveNode = splitNode(bTree, node, newEntry);
     // printf("SPLIT_LEAVE_NODE.3\n");
 
     // newLeaveNode->entries[0].child = node->index;
 
     int promotedNewIndex = promoteEntry(bTree, newLeaveNode, parentNode);
-    // printf("SPLIT_LEAVE_NODE.4\n");
+    printf("PROMOTING KEY %d\n", promotedNewIndex);
 
     if (parentNode->entries[promotedNewIndex + 1].key >= 0) {
         parentNode->entries[promotedNewIndex + 1].child = newLeaveNode->index;
@@ -36,13 +36,20 @@ int hadleLeaveNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
         parentNode->nextNode = newLeaveNode->index;
     }
 
+
     parentNode->entries[promotedNewIndex].child = node->index;
+    printf("PARENT NODE \n");
+    printNode(parentNode);
+    printf("NEW LEAVE NODE \n");
+    printNode(newLeaveNode);
+    printf("ORIGIN NODE \n");
+    printNode(node);
 
     updateNode(node);
     updateNode(parentNode);
     updateNode(newLeaveNode);
-    free(parentNode);
-    free(newLeaveNode);
+    // free(parentNode);
+    // free(newLeaveNode);
     // printf("SPLIT_LEAVE_NODE.6\n");
 }
 
@@ -61,15 +68,22 @@ void handleRootNodeOverflow(BTree *bTree, Node *node, Entry *newEntry) {
     node->parentNode = newRootNode->index;
     bTree->rootNode = newRootNode->index;
 
-    promoteEntry(bTree, newLeaveNode, newRootNode);
+    int index = promoteEntry(bTree, newLeaveNode, newRootNode);
+    printf("PROMOTING KEY %d\n", index);
     // printf("SPLIT_ROOT_NODE.4\n");
+    printf("PARENT NODE \n");
+    printNode(newRootNode);
+    printf("NEW LEAVE NODE \n");
+    printNode(newLeaveNode);
+    printf("ORIGIN NODE \n");
+    printNode(node);
 
     updateNode(newRootNode);
     updateNode(node);
     updateNode(newLeaveNode);
     // printf("SPLIT_ROOT_NODE.5\n");
-    free(newLeaveNode);
-    free(node);
+    // free(newLeaveNode);
+    // free(node);
     // printf("SPLIT_ROOT_NODE.6\n");
 }
 

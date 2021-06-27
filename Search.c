@@ -20,18 +20,18 @@ void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP){
     }else if(node->entries[position].key > nUSP){
         if(position > 0) {
             nextIndex = node->entries[position-1].child;
-            free(node);
+            // free(node);
             getRRNByPrimaryKey(result, nextIndex, nUSP);
         }
         else {
             nextIndex = node->entries[0].child;
-            free(node);
+            // free(node);
             getRRNByPrimaryKey(result, nextIndex, nUSP);
         }
     }else{
         if(position < node->numberOfEntries - 1) {
             nextIndex = node->entries[position+1].child;
-            free(node);
+            // free(node);
             getRRNByPrimaryKey(result, nextIndex, nUSP);
         }
         else{
@@ -41,7 +41,7 @@ void getRRNByPrimaryKey(Result * result, long int nodeIndex, int nUSP){
                 return;
             }else{
                 nextIndex = node->nextNode;
-                free(node);
+                // free(node);
                 getRRNByPrimaryKey(result, nextIndex, nUSP);
             }
         }

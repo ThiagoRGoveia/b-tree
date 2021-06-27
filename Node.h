@@ -13,5 +13,5 @@ int checkIfNodeIsFull(Node *node);
 void addSortedEntryToNode(Entry *entry, Node *node);
 void removeEntryAndRearrangeNode(Entry *entry, Node *node);
 void removeEntry(Entry *entry);
-
+void printNode(Node *node);
 #endif

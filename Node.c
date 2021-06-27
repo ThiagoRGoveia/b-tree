@@ -63,6 +63,7 @@ int addEntryToNode(Entry *entry, Node *node) {
         node->numberOfEntries = 1;
         updateNode(node);
         // free(node);
+        printNode(node);
         return 0;
     }
     for (int i = node->numberOfEntries - 1; i >= 0; i--) {
@@ -75,12 +76,14 @@ int addEntryToNode(Entry *entry, Node *node) {
             updateNode(node);
             index = node->numberOfEntries -1;
             // free(node);
+            printNode(node);
             return index;
         }
     }
     node->entries[node->numberOfEntries++] = *entry;
     updateNode(node);
     index = node->numberOfEntries -1;
+    printNode(node);
     // free(node);
     return index; // Subtrair 1 para encontrar o index
 }
@@ -121,4 +124,16 @@ void removeEntry(Entry *entry) {
     entry->key = -1;
     entry->rrn = -1;
     entry->child = -1;
+}
+
+void printNode(Node *node) {
+    printf("Index %d\n",node->index);
+    for (int i = 0; i < NODE_MAX_ENTRIES; i++) {
+        printf("Key [%d] %d\n", i,node->entries[i].key);
+        printf("Child [%d] %d\n", i,node->entries[i].child);
+    }
+    printf("Next node %d\n",node->nextNode);
+    printf("Parent %d\n",node->parentNode);
+    printf("Number of entries %d\n",node->numberOfEntries);
+    printf("---\n");
 }
