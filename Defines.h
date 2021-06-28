@@ -1,7 +1,7 @@
 #ifndef DEFINES_H_
 #define DEFINES_H_
 
-#define B_TREE_ORDER 4
+#define B_TREE_ORDER 20
 #define FIELD_LEN 50
 #define STRING_FIELD_SIZE 255
 #define STUDENT_SIZE (8 + STRING_FIELD_SIZE * 3)
