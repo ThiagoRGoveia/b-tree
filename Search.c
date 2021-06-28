@@ -4,8 +4,8 @@ void getRRNByPrimaryKey(Result * result, int nodeIndex, int nUSP, Search *search
     int position = -1, nextIndex;
 
     Node *node = getNodeByIndex(nodeIndex);
-    printf("SEARCH NUSP %d\n", nUSP);
-    printNode(node);
+    // printf("SEARCH NUSP %d\n", nUSP);
+    // printNode(node);
     position = keyPositionSearch(node->entries, 0, node->numberOfEntries, nUSP);
     // printf("POSITION %d\n", position);
     if (position < 0) {

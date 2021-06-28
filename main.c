@@ -97,7 +97,6 @@ int main()
             result.node = NULL;
             search.currentIndex = -1;
             free(search.history);
-
         } else if (!strcmp(option, "exit")) {
             break;
         } else if (!strcmp(option, "root")) {
@@ -108,10 +107,10 @@ int main()
 	}
     writeBTreeHeader(bTree);
     // rootNode = getNodeByIndex(bTree->rootNode);
-    Node *node;
-    for (int i = 0; i < bTree->numberOfNodes; i++) {
-        read(i);
-    }
+    // Node *node;
+    // for (int i = 0; i < bTree->numberOfNodes; i++) {
+    //     read(i);
+    // }
 }
 
 // printf("---\n");
