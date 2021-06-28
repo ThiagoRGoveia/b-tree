@@ -5,4 +5,4 @@ run:
 	./exec
 
 zip:
-	@zip -r exercicio.zip *.c *.h Makefile
+	@zip -r trabalho.zip *.c *.h Makefile nodes.dat data.dat

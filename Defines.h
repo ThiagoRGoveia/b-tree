@@ -3,10 +3,10 @@
 
 #define B_TREE_ORDER 20
 #define FIELD_LEN 50
-#define STRING_FIELD_SIZE 255
+#define STRING_FIELD_SIZE 25
 #define STUDENT_SIZE (8 + STRING_FIELD_SIZE * 3)
 #define NODE_MAX_ENTRIES (B_TREE_ORDER - 1)
-#define NODE_SIZE (16 + (16 * (NODE_MAX_ENTRIES)))
+#define NODE_SIZE (12 + (16 * (NODE_MAX_ENTRIES)))
 #define INDEX_FILE "nodes.dat"
 #define DATA_FILE "data.dat"
 #define DELIMITERCHAR ','

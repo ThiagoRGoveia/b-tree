@@ -9,7 +9,6 @@ Node *createNodeObject() {
         node->entries[i].child = -1;
     }
     node->numberOfEntries = 0;
-    node->numberOfChildren = 0;
     node->nextNode = -1;
     return node;
 }

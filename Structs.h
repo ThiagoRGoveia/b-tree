@@ -12,7 +12,6 @@ typedef struct Entry {
 typedef struct Node {
     int index;
     int numberOfEntries;
-    int numberOfChildren;
     Entry entries[NODE_MAX_ENTRIES];
     int nextNode;
 } Node;
