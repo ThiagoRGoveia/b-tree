@@ -10,7 +10,6 @@ Node *createNodeObject() {
     }
     node->numberOfEntries = 0;
     node->numberOfChildren = 0;
-    node->parentNode = -1;
     node->nextNode = -1;
     return node;
 }
@@ -146,16 +145,6 @@ void printNode(Node *node) {
         printf("Child [%d] %d\n", i,node->entries[i].child);
     }
     printf("Next node %d\n",node->nextNode);
-    printf("Parent %d\n",node->parentNode);
     printf("Number of entries %d\n",node->numberOfEntries);
     printf("---\n");
-}
-
-void updateParentNode(int nodeIndex, int newParentIndex) {
-    FILE *fp;
-    long int fieldRRN = nodeIndex * NODE_SIZE + HEADER_OFFSET + PARENT_NODE_OFFSET;
-    fp = fopen(INDEX_FILE, "r+");
-    fseek(fp, fieldRRN, SEEK_SET);
-    writeParentNodeToFile(fp, newParentIndex);
-    fclose(fp);
 }

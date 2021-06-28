@@ -9,6 +9,5 @@ Node *readNodeFromFile(FILE *fp);
 void writeNodeToFile(FILE *fp, Node *node);
 BTree *readBTreeFromFile(FILE *fp);
 void writeBtreeHeaderToFile(FILE *fp, BTree *bTree);
-void writeParentNodeToFile(FILE *fp, int parentNodeIndex);
 
 #endif

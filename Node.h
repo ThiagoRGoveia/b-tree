@@ -14,5 +14,4 @@ void addSortedEntryToNode(Entry *entry, Node *node);
 void removeEntryAndRearrangeNode(Entry *entry, Node *node);
 void removeEntry(Entry *entry);
 void printNode(Node *node);
-void updateParentNode(int nodeIndex, int newParentIndex);
 #endif

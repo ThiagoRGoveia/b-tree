@@ -6,7 +6,7 @@
 #define STRING_FIELD_SIZE 255
 #define STUDENT_SIZE (8 + STRING_FIELD_SIZE * 3)
 #define NODE_MAX_ENTRIES (B_TREE_ORDER - 1)
-#define NODE_SIZE (20 + (16 * (NODE_MAX_ENTRIES)))
+#define NODE_SIZE (16 + (16 * (NODE_MAX_ENTRIES)))
 #define INDEX_FILE "nodes.dat"
 #define DATA_FILE "data.dat"
 #define DELIMITERCHAR ','

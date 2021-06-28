@@ -14,7 +14,6 @@ typedef struct Node {
     int numberOfEntries;
     int numberOfChildren;
     Entry entries[NODE_MAX_ENTRIES];
-    int parentNode;
     int nextNode;
 } Node;
 
