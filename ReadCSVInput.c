@@ -58,24 +58,17 @@ Student *readStudentFromCSV() {
     Student *student;
     char* stringHolder;
     student = (Student *) malloc(sizeof(Student));
-    // printf("%s\n", "Inicio");
     student->nUSP = getIntField();
-    // printf("%d\n", student->nUSP);
     stringHolder =  getStringField();
     strcpy(student->name, stringHolder);
-    // printf("%s\n", student->name);
     free(stringHolder);
     stringHolder =  getStringField();
     strcpy(student->surname, stringHolder);
-    // printf("%s\n", student->surname);
     free(stringHolder);
     stringHolder =  getStringField();
     strcpy(student->course, stringHolder);
-    // printf("%s\n", student->course);
     free(stringHolder);
     student->grade = getFloatField();
-    // printf("%f\n", student->grade);
-    // printf("%s\n", "FIM");
 
     return student;
 }
